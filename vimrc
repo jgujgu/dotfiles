@@ -43,6 +43,7 @@ Plugin 'danro/rename.vim'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'thoughtbot/vim-rspec'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -139,6 +140,12 @@ function! MyFugitive()
   return ''
 endfunction
 
+" Error symbols
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_style_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_style_warning_symbol = "⚠"
+
 function! MyLineInfo()
   return '🌞 ' . line('.') . '/' . line('$')
 endfunction
@@ -210,7 +217,14 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " strip trailing whitespace on save
-set tabstop=2 shiftwidth=2 " a tab is two spaces (or set this to 4)
+
+" Detect file type for indentation below
+:filetype indent on
+" " Use 4 space indentation on all files
+:autocmd FileType * set ai sw=4 sts=4 et
+" Use 2 space indentation on Ruby and YAML files
+:autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+
 set expandtab " use spaces, not tabs (optional)
 set backspace=indent,eol,start " backspace through everything in insert mode
 
@@ -316,4 +330,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-"edit
+
+" RSpec.vim mapping
+map <Leader>a :call RunAllSpecs()<CR>

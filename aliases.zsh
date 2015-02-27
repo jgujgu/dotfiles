@@ -1,4 +1,7 @@
+#reset
 alias rzp="source ~/.zprofile"
+
+#convenience
 alias ..="cd .."
 
 #editors
@@ -6,6 +9,9 @@ alias v="vim $1"
 alias s="sublime $1"
 alias a="atom $1"
 alias l="ls"
+
+#firefox
+alias ff="open -a firefox"
 
 #git
 alias gs="git status"
@@ -56,6 +62,7 @@ alias dbm="bundle exec rake db:migrate"
 alias dbset="bundle exec rake db:setup"
 alias be="bundle exec"
 alias routes="rake routes"
+alias bi="bundle install"
 
 #go
 alias g="go run *"
@@ -83,6 +90,7 @@ alias ale="v ~/.dotfiles/aliases.zsh"
 alias vimrc="v ~/.dotfiles/vimrc"
 alias dot="~/.dotfiles"
 alias snip='v ~/.dotfiles/vim/bundle/vim-snippets/UltiSnips'
+alias ulti='~/.dotfiles/vim/bundle/vim-snippets/UltiSnips'
 
 
 # ls automatically after cd

@@ -1,0 +1,10 @@
+[user]
+	name = Jeffrey Gu
+	email = jeffwgu@gmail.com
+[core]
+	editor = vim
+[github]
+	user = jgu2160
+	token = 7a1af1bbd5f06e30c7b9a1aae35e1f8b9eed9fae
+[push]
+	default = simple
