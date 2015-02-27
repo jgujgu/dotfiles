@@ -1,3 +1,4 @@
+" Vundle initialize
 " set the runtime path ro include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -50,9 +51,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 filetype off                  " required
 
+" ================ General Settings =======================
 " Turn off vi compatibility
 set nocompatible
-
 set smartindent
 set autoindent
 setlocal foldmethod=indent
@@ -69,101 +70,37 @@ filetype indent on
 " Highlight current line and colors
 set cursorline
 
+"No sounds
+set visualbell
+
 " Line number color
 highlight LineNr ctermfg=014
 
 " Set 80 character ruler and colors
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn cterm=NONE ctermbg=0"
-
+:colorscheme base16-brewer
 set noswapfile
 set autowrite
-set expandtab
 set softtabstop=2
 set background=dark
 set modifiable
 set ignorecase
 set ic
-let g:neocomplete#enable_at_startup = 1
+set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
+syntax enable " highlighting and shit
+set scrolloff=4 " adds top/bottom buffer between cursor and window
+set number " line numbers
+set showcmd " display incomplete commands
+set autoread " Auto-reload buffers when file changed on disk
+set expandtab " use spaces, not tabs (optional)
+set backspace=indent,eol,start " backspace through everything in insert mode
 
-" ================ Completion =======================
-" Stuff to ignore when tab completing
-set wildmode=list:longest
-set wildignore=*.o,*.obj,*~
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=node_modules/**
-set wildignore+=tmp/**
+"hide very last line because of redundancy
+set noshowmode
+set laststatus=10
 
-" Lightline config
-let g:lightline = {
-      \ 'colorscheme': '16color',
-      \ 'active': {
-      \ 'left': [ [ 'mode', ], [ 'fugitive', 'readonly', 'filename' ] ],
-      \ 'right': [ [ 'syntastic', 'column', 'lineinfo' ], [ 'filetype' ] ]
-      \ },
-      \ 'component': {
-      \ 'column': '%c'
-      \ },
-      \ 'component_function': {
-      \ 'fugitive': 'MyFugitive',
-      \ 'readonly': 'MyReadonly',
-      \ 'lineinfo': 'MyLineInfo'
-      \ },
-      \ 'component_expand': {
-      \ 'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \ 'syntastic': 'error',
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-      \ }
-
-" Lightline functions
-function! MyReadonly()
-  if &readonly
-    return "🔒"
-  else
-    return ""
-  endif
-endfunction
-
-function! MyFugitive()
-  if exists('*fugitive#head')
-    let _ = fugitive#head()
-    return strlen(_) ? '🍆 '._ : ''
-  endif
-  return ''
-endfunction
-
-" Error symbols
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_style_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_style_warning_symbol = "⚠"
-
-function! MyLineInfo()
-  return '🌞 ' . line('.') . '/' . line('$')
-endfunction
-
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.rb,*.js,*.css,*.sh call s:syntastic()
-augroup END
-
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
-
-"autosave in tmux
-let g:tmux_navigator_save_on_switch = 1
-
-"leader map with leader commands
+" ================ Leader and other mappings =======================
 let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :wq<CR>
@@ -175,70 +112,12 @@ nnoremap <Leader>s :sp<CR>
 nnoremap <Leader>4 :Rename<Space>
 nnoremap <Leader>d :!mkdir<Space>
 nmap <Leader><Leader> V
-
-"syntastic and rubocop stuff
-let g:vimrubocop_keymap = 0
-nmap <Leader>c :RuboCop<CR>
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-
-"" Basic editor behaviour
-filetype plugin indent on " load file type plugins + indentation
-set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-syntax enable " highlighting and shit
-set scrolloff=4 " adds top/bottom buffer between cursor and window
-set number " line numbers
-set showcmd " display incomplete commands
-set autoread " Auto-reload buffers when file changed on disk
-"" Whitespace
-function! <SID>StripTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-
-  "associate the .es6 file extension with JavaScript
-  autocmd BufRead,BufNewFile *.es6 setfiletype javascript
-
-  " Do the business:
-  %s/\s\+$//e
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " strip trailing whitespace on save
-
-" Detect file type for indentation below
-:filetype indent on
-" " Use 4 space indentation on all files
-:autocmd FileType * set ai sw=4 sts=4 et
-" Use 2 space indentation on Ruby and YAML files
-:autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
-
-set expandtab " use spaces, not tabs (optional)
-set backspace=indent,eol,start " backspace through everything in insert mode
-
-:syntax on
-:colorscheme base16-brewer
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
 inoremap jf <esc>
 inoremap fj <esc>
-
 map <C-i> :NERDTreeToggle<CR>
-
 "ruby debug abbrev
 iabbr bb byebug
 map <Leader>bb orequire 'byebug'; byebug<esc>:w<cr>
@@ -247,7 +126,6 @@ map <Leader>bb orequire 'byebug'; byebug<esc>:w<cr>
 "Hit v again to expand selection to word
 "Hit v again to expand to paragraph
 "Hit <C-v> go back to previous selection if I went too far
-
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
@@ -264,66 +142,19 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: "\<TAB>"
 " Running jasmine-node tests from Vim with Vimux
 map <Leader>j :w %<cr>:call VimuxRunCommand("clear; jasmine-node --verbose " . bufname("%"))<cr>
-
-
-" ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-if has('persistent_undo')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
-endif
-" Enable status bar always
-set laststatus=2
-
-"Goyo-limelight stuff
-
-function! s:goyo_enter()
-  silent !tmux set status off
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  Limelight
-  " ...
-endfunction
-
-function! s:goyo_leave()
-  silent !tmux set status on
-  set showmode
-  set showcmd
-  set scrolloff=5
-  Limelight!
-  " ...
-endfunction
-
-autocmd! User GoyoEnter
-autocmd! User GoyoLeave
-autocmd  User GoyoEnter nested call <SID>goyo_enter()
-autocmd  User GoyoLeave nested call <SID>goyo_leave()
-nnoremap <Leader>g :Goyo<CR>
 
 "Gundo toggle
 nnoremap <Leader>5 :GundoToggle<CR>
 
 "window swap
 nnoremap <silent> <leader>2 :call WindowSwap#EasyWindowSwap()<CR>
-
-"hide very last line because of redundancy
-set noshowmode
-set laststatus=10
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -333,3 +164,162 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " RSpec.vim mapping
 map <Leader>a :call RunAllSpecs()<CR>
+
+" ================ Completion =======================
+" Stuff to ignore when tab completing
+let g:neocomplete#enable_at_startup = 1
+set wildmode=list:longest
+set wildignore=*.o,*.obj,*~
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=node_modules/**
+set wildignore+=tmp/**
+
+" ================ Status bar configuration =======================
+" Lightline config
+let g:lightline = {
+            \ 'colorscheme': '16color',
+            \ 'active': {
+            \ 'left': [ [ 'mode', ], [ 'fugitive', 'readonly', 'filename' ] ],
+            \ 'right': [ [ 'syntastic', 'column', 'lineinfo' ], [ 'filetype' ] ]
+            \ },
+            \ 'component': {
+            \ 'column': '%c'
+            \ },
+            \ 'component_function': {
+            \ 'fugitive': 'MyFugitive',
+            \ 'readonly': 'MyReadonly',
+            \ 'lineinfo': 'MyLineInfo'
+            \ },
+            \ 'component_expand': {
+            \ 'syntastic': 'SyntasticStatuslineFlag',
+            \ },
+            \ 'component_type': {
+            \ 'syntastic': 'error',
+            \ },
+            \ 'separator': { 'left': '', 'right': '' },
+            \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+            \ }
+
+" Lightline functions
+function! MyReadonly()
+    if &readonly
+        return "🔒"
+    else
+        return ""
+    endif
+endfunction
+
+function! MyFugitive()
+    if exists('*fugitive#head')
+        let _ = fugitive#head()
+        return strlen(_) ? '🍆 '._ : ''
+    endif
+    return ''
+endfunction
+
+" Error symbols
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_style_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_style_warning_symbol = "⚠"
+
+function! MyLineInfo()
+    return '🌞 ' . line('.') . '/' . line('$')
+endfunction
+
+augroup AutoSyntastic
+    autocmd!
+    autocmd BufWritePost *.rb,*.js,*.css,*.sh call s:syntastic()
+augroup END
+
+function! s:syntastic()
+    SyntasticCheck
+    call lightline#update()
+endfunction
+
+"syntastic and rubocop stuff
+let g:vimrubocop_keymap = 0
+nmap <Leader>c :RuboCop<CR>
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" ================ Misc =======================
+"autosave in tmux
+let g:tmux_navigator_save_on_switch = 1
+
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" ================ Delete whitespace function =======================
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+
+    "associate the .es6 file extension with JavaScript
+    autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " strip trailing whitespace on save
+
+" Detect file type for indentation below
+:filetype indent on
+" " Use 4 space indentation on all files
+:autocmd FileType * set ai sw=4 sts=4 et
+" Use 2 space indentation on Ruby and YAML files
+:autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+
+" For snippet_complete marker.
+if has('conceal')
+    set conceallevel=2 concealcursor=i
+endif
+
+" ================ Persistent Undo for undo plugin ==================
+" Keep undo history across sessions, by storing in file.
+if has('persistent_undo')
+    silent !mkdir ~/.vim/backups > /dev/null 2>&1
+    set undodir=~/.vim/backups
+    set undofile
+endif
+" Enable status bar always
+set laststatus=2
+
+" ================ Goyo-limelight commands ==================
+function! s:goyo_enter()
+    silent !tmux set status off
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+    Limelight
+    " ...
+endfunction
+
+function! s:goyo_leave()
+    silent !tmux set status on
+    set showmode
+    set showcmd
+    set scrolloff=5
+    Limelight!
+    " ...
+endfunction
+
+autocmd! User GoyoEnter
+autocmd! User GoyoLeave
+autocmd  User GoyoEnter nested call <SID>goyo_enter()
+autocmd  User GoyoLeave nested call <SID>goyo_leave()
+nnoremap <Leader>g :Goyo<CR>
