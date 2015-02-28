@@ -105,7 +105,7 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :wq<CR>
 nnoremap <Leader>1 :q!<CR>
-nnoremap <Leader>m :CtrlP<CR>
+nnoremap <Leader>n :!open -a firefox http://localhost:3000/
 nnoremap <Leader>e :e<Space>
 nnoremap <Leader>v :vsp<CR>
 nnoremap <Leader>s :sp<CR>
@@ -121,6 +121,9 @@ map <C-i> :NERDTreeToggle<CR>
 "ruby debug abbrev
 iabbr bb byebug
 map <Leader>bb orequire 'byebug'; byebug<esc>:w<cr>
+" Easy copy pasting
+map <Leader>m :.!pbcopy<CR>
+map <Leader>p :r !pbpaste<CR>
 
 "Hit v to select one character
 "Hit v again to expand selection to word
