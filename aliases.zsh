@@ -90,7 +90,7 @@ alias ale="v ~/.dotfiles/aliases.zsh"
 alias vimrc="v ~/.dotfiles/vimrc"
 alias dot="~/.dotfiles"
 alias snip='v ~/.dotfiles/vim/bundle/vim-snippets/UltiSnips'
-alias ulti='~/.dotfiles/vim/bundle/vim-snippets/UltiSnips'
+alias snips='~/.dotfiles/vim/bundle/vim-snippets/UltiSnips'
 
 
 # ls automatically after cd
