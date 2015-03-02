@@ -63,6 +63,7 @@ syntax on             " Enable syntax highlighting
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
+set nofoldenable "dont fold by default
 
 " load indent file for the current filetype
 filetype indent on
@@ -105,11 +106,12 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :wq<CR>
 nnoremap <Leader>1 :q!<CR>
-nnoremap <Leader>n :!open -a firefox http://localhost:3000/
+nnoremap <Leader>h :!open -a firefox http://localhost:3000/
 nnoremap <Leader>e :e<Space>
 nnoremap <Leader>v :vsp<CR>
 nnoremap <Leader>s :sp<CR>
 nnoremap <Leader>4 :Rename<Space>
+nnoremap <Leader>f :%s/
 nnoremap <Leader>d :!mkdir<Space>
 nmap <Leader><Leader> V
 nnoremap <F3> :NumbersToggle<CR>
@@ -118,9 +120,11 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap jf <esc>
 inoremap fj <esc>
 map <C-i> :NERDTreeToggle<CR>
+
 "ruby debug abbrev
 iabbr bb byebug
 map <Leader>bb orequire 'byebug'; byebug<esc>:w<cr>
+
 " Easy copy pasting
 map <Leader>m :.!pbcopy<CR>
 map <Leader>p :r !pbpaste<CR>

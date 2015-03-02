@@ -33,14 +33,14 @@ alias glb='git log --topo-order --pretty=format:"${_git_log_brief_format}"'
 
 # Log
 zstyle -s ':prezto:module:git:log:medium' format '_git_log_medium_format' \
-|| _git_log_medium_format='%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset) %C(blue)%ai (%ar)%C(reset)%n%+B'
+    || _git_log_medium_format='%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset) %C(blue)%ai (%ar)%C(reset)%n%+B'
 zstyle -s ':prezto:module:git:log:oneline' format '_git_log_oneline_format' \
-|| _git_log_oneline_format='%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'
+    || _git_log_oneline_format='%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'
 zstyle -s ':prezto:module:git:log:brief' format '_git_log_brief_format' \
-|| _git_log_brief_format='%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'
+    || _git_log_brief_format='%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'
 # Status
 zstyle -s ':prezto:module:git:status:ignore' submodules '_git_status_ignore_submodules' \
-|| _git_status_ignore_submodules='none'
+    || _git_status_ignore_submodules='none'
 
 #tmux
 alias tn="tmux new -s"
@@ -92,13 +92,33 @@ alias dot="~/.dotfiles"
 alias snip='v ~/.dotfiles/vim/bundle/vim-snippets/UltiSnips'
 alias snips='~/.dotfiles/vim/bundle/vim-snippets/UltiSnips'
 
-
 # ls automatically after cd
 function cs() {
-  if [ $# -eq 0 ]; then
+if [ $# -eq 0 ]; then
     cd && ls
-  else
+else
     cd "$*" && ls
-  fi
+fi
 }
 
+# command line search google and wikipedia
+function goo() {
+    local s="$_"
+    local query=
+    case "$1" in
+        '')   ;;
+        that) query="search?q=${s//[[:space:]]/+}" ;;
+        *)    s="$*"; query="search?q=${s//[[:space:]]/+}" ;;
+    esac
+    open -a firefox "http://www.google.com/${query}"
+}
+function wi() {
+    local s="$_"
+    local query=
+    case "$1" in
+        '')   ;;
+        that) query="${s//[[:space:]]/_}" ;;
+        *)    s="$*"; query="${s//[[:space:]]/_}" ;;
+    esac
+    open -a firefox "https://en.wikipedia.org/${query}"
+}
