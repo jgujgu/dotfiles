@@ -124,6 +124,7 @@ map <C-i> :NERDTreeToggle<CR>
 "ruby debug abbrev
 iabbr bb byebug
 map <Leader>bb orequire 'byebug'; byebug<esc>:w<cr>
+map <Leader>yy orequire 'pry'; binding.pry<esc>:w<cr>
 
 " Easy copy pasting
 map <Leader>m :.!pbcopy<CR>
