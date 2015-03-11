@@ -3,6 +3,9 @@ alias rzp="source ~/.zprofile"
 
 #convenience
 alias ..="cd .."
+alias d="~/Desktop"
+alias tu="~/Turing"
+alias rls="~/Turing/rs/rails"
 
 #editors
 alias v="vim $1"
@@ -14,6 +17,7 @@ alias l="ls"
 alias ff="open -a firefox"
 
 #git
+alias git="hub"
 alias gs="git status"
 alias gd="git branch -d"
 alias gc="git checkout"
@@ -53,8 +57,9 @@ alias x="exit"
 
 #ruby/rails
 alias r="ruby"
+alias i="irb"
 alias ra="rails"
-alias rs=" ra s"
+alias rs="ra s"
 alias rk="rake"
 alias sg="shotgun"
 alias rc="rails c"
@@ -63,6 +68,12 @@ alias dbset="bundle exec rake db:setup"
 alias be="bundle exec"
 alias routes="rake routes"
 alias bi="bundle install"
+alias ri="rails g rspec:install"
+alias u="unicorn"
+
+#volt
+alias vs="volt server"
+alias vc="volt console"
 
 #go
 alias g="go run *"
@@ -103,22 +114,27 @@ fi
 
 # command line search google and wikipedia
 function goo() {
-    local s="$_"
-    local query=
-    case "$1" in
-        '')   ;;
-        that) query="search?q=${s//[[:space:]]/+}" ;;
-        *)    s="$*"; query="search?q=${s//[[:space:]]/+}" ;;
-    esac
-    open -a firefox "http://www.google.com/${query}"
+local s="$_"
+local query=
+case "$1" in
+    '')   ;;
+    that) query="search?q=${s//[[:space:]]/+}" ;;
+    *)    s="$*"; query="search?q=${s//[[:space:]]/+}" ;;
+esac
+open -a firefox "http://www.google.com/${query}"
 }
+
 function wi() {
-    local s="$_"
-    local query=
-    case "$1" in
-        '')   ;;
-        that) query="${s//[[:space:]]/_}" ;;
-        *)    s="$*"; query="${s//[[:space:]]/_}" ;;
-    esac
-    open -a firefox "https://en.wikipedia.org/${query}"
+local s="$_"
+local query=
+case "$1" in
+    '')   ;;
+    that) query="${s//[[:space:]]/_}" ;;
+    *)    s="$*"; query="${s//[[:space:]]/_}" ;;
+esac
+open -a firefox "https://en.wikipedia.org/${query}"
+}
+
+function killag {
+    kill $(ps aux | ag $1 | ag -v "grep" | awk '{print $2}')
 }
