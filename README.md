@@ -1,7 +1,7 @@
 Readme mostly copied from indiesquidge. ;D I've learned most of what I know about dotfiles from him. Actually, all.
 
 Focused heavily on Tmux, Vim, Zsh, and Prezto integration.
-![](http://i.imgur.com/GavxyLy.jpg)
+![](http://i.imgur.com/rOGYPOd.png?1)
 
 ## Installation
 
@@ -58,5 +58,4 @@ Read the docs on the main Prezto page to change your prompt, install modules (fo
 
 ###iTerm2
 
-Colors for iTerm2 are stored in config/base16-shell. I currently use a heavily modified version of jellybeans.
-`
+Colors for iTerm2 are stored in config/base16-shell. I currently use a heavily modified version of base16-brewer.

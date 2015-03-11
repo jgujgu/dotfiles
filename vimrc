@@ -46,10 +46,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'thoughtbot/vim-rspec'
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
-filetype off                  " required
 
 " ================ General Settings =======================
 " Turn off vi compatibility
@@ -58,15 +55,11 @@ set smartindent
 set autoindent
 setlocal foldmethod=indent
 autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
-set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 set nofoldenable "dont fold by default
-
-" load indent file for the current filetype
-filetype indent on
 
 " Highlight current line and colors
 set cursorline
@@ -89,7 +82,6 @@ set modifiable
 set ignorecase
 set ic
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
-syntax enable " highlighting and shit
 set scrolloff=4 " adds top/bottom buffer between cursor and window
 set number " line numbers
 set showcmd " display incomplete commands
