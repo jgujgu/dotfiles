@@ -53,6 +53,7 @@ call vundle#end()            " required
 set nocompatible
 set smartindent
 set autoindent
+set ff=unix
 setlocal foldmethod=indent
 autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
 syntax on             " Enable syntax highlighting
@@ -77,6 +78,7 @@ highlight ColorColumn cterm=NONE ctermbg=0"
 set noswapfile
 set autowrite
 set softtabstop=2
+set tabstop=2 shiftwidth=2 expandtab
 set background=dark
 set modifiable
 set ignorecase

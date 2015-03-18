@@ -60,3 +60,5 @@ github-create() {
   git push -u origin master > /dev/null 2>&1
   echo " done."
 }
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
