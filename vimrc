@@ -3,7 +3,6 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-"let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fugitive'
@@ -46,7 +45,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'thoughtbot/vim-rspec'
 
-call vundle#end()            " required
+call vundle#end()
 
 " ================ General Settings =======================
 " Turn off vi compatibility
@@ -67,9 +66,6 @@ set cursorline
 
 "No sounds
 set visualbell
-
-" Line number color
-highlight LineNr ctermfg=014
 
 " Set 80 character ruler and colors
 let &colorcolumn=join(range(81,999),",")
@@ -183,7 +179,7 @@ set wildignore+=tmp/**
 " ================ Status bar configuration =======================
 " Lightline config
 let g:lightline = {
-            \ 'colorscheme': '16color',
+            \ 'colorscheme': 'solarized',
             \ 'active': {
             \ 'left': [ [ 'mode', ], [ 'fugitive', 'readonly', 'filename' ] ],
             \ 'right': [ [ 'syntastic', 'column', 'lineinfo' ], [ 'filetype' ] ]
@@ -284,7 +280,7 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " strip trailing whi
 " " Use 4 space indentation on all files
 :autocmd FileType * set ai sw=4 sts=4 et
 " Use 2 space indentation on Ruby and YAML files
-:autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+:autocmd FileType ruby,eruby,yaml,javascript,css,scss,html set ai sw=2 sts=2 et
 
 " For snippet_complete marker.
 if has('conceal')

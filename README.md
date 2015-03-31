@@ -58,4 +58,4 @@ Read the docs on the main Prezto page to change your prompt, install modules (fo
 
 ###iTerm2
 
-Colors for iTerm2 are stored in config/base16-shell. I currently use a heavily modified version of base16-brewer.
+Colors for iTerm2 are stored in config/base16-shell. I currently use solarized.

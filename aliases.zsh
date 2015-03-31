@@ -3,7 +3,7 @@ alias rzp="source ~/.zprofile"
 
 #convenience
 alias ..="cd .."
-alias d="~/Desktop"
+alias desk="~/Desktop"
 alias tu="~/Turing"
 alias rls="~/Turing/rs/rails"
 
@@ -27,6 +27,7 @@ alias gcm="git commit -m"
 alias gh="git hist"
 alias gpu="git push --set-upstream origin HEAD"
 alias gp="git push"
+alias gpu="git pull"
 alias clone="git clone"
 alias gam="git commit -a -m"
 alias gcb="git checkout -b"
@@ -133,7 +134,7 @@ case "$1" in
     that) query="${s//[[:space:]]/_}" ;;
     *)    s="$*"; query="${s//[[:space:]]/_}" ;;
 esac
-open -a firefox "https://en.wikipedia.org/${query}"
+open -a firefox "https://en.wikipedia.org/wiki/${query}"
 }
 
 function killag {
