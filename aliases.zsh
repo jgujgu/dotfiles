@@ -7,6 +7,10 @@ alias desk="~/Desktop"
 alias tu="~/Turing"
 alias rls="~/Turing/rs/rails"
 
+#keyboard on off
+alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
+alias on="sudo kextload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
+
 #editors
 alias v="vim $1"
 alias s="sublime $1"
