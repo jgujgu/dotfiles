@@ -1,7 +1,7 @@
 Readme mostly copied from indiesquidge. ;D I've learned most of what I know about dotfiles from him. Actually, all.
 
 Focused heavily on Tmux, Vim, Zsh, and Prezto integration.
-![](http://imgur.com/3Aajw58)
+![](http://i.imgur.com/3Aajw58.png?1)
 
 ## Installation
 
