@@ -5,6 +5,7 @@ alias rzp="source ~/.zprofile"
 alias ..="cd .."
 alias desk="~/Desktop"
 alias pin="~/Desktop/pinyintype"
+alias down="~/Desktop/down"
 alias tu="~/Turing"
 alias rls="~/Turing/rs/rails"
 
@@ -38,9 +39,12 @@ alias clone="git clone"
 alias gam="git commit -a -m"
 alias gcb="git checkout -b"
 alias gb="git branch"
+alias gr="git rebase"
 alias gpb="git push --set-upstream origin"
-alias gl='git log --topo-order --pretty=format:"${_git_log_medium_format}"'
-alias glb='git log --topo-order --pretty=format:"${_git_log_brief_format}"'
+alias gl="git log --all --graph --decorate" # detailed log
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset \
+%an: %s - %Creset %C(yellow)%d%Creset \
+%Cgreen(%cr)%Creset' --abbrev-commit --date=relative" # pretty log
 
 # Log
 zstyle -s ':prezto:module:git:log:medium' format '_git_log_medium_format' \
@@ -144,5 +148,22 @@ open -a firefox "https://en.wikipedia.org/wiki/${query}"
 }
 
 function killag {
-    kill $(ps aux | ag $1 | ag -v "grep" | awk '{print $2}')
+kill $(ps aux | ag $1 | ag -v "grep" | awk '{print $2}')
+}
+
+# Create a new directory and enter it
+function md() {
+mkdir -p "$@" && cd "$@"
+}
+
+function rails_pg() {
+rails new $1 -T -B --database=postgresql
+cd $1
+add_rails_gems
+bundle
+rails generate rspec:install
+git init
+git add .
+git commit -m "initial commit"
+vim .;
 }
