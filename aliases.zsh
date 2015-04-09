@@ -15,6 +15,7 @@ alias on="sudo kextload /System/Library/Extensions/AppleUSBTopCase.kext/Contents
 
 #editors
 alias v="vim $1"
+alias n="nvim $1"
 alias s="sublime $1"
 alias a="atom $1"
 alias l="ls"
@@ -45,6 +46,7 @@ alias gl="git log --all --graph --decorate" # detailed log
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset \
 %an: %s - %Creset %C(yellow)%d%Creset \
 %Cgreen(%cr)%Creset' --abbrev-commit --date=relative" # pretty log
+alias gph="git push heroku master"
 
 # Log
 zstyle -s ':prezto:module:git:log:medium' format '_git_log_medium_format' \
@@ -65,6 +67,7 @@ alias tsess="tmux list-sessions"
 alias td="tmux detach"
 alias tks="tmux kill-server"
 alias x="exit"
+alias nw='tmux new-window -c "$PWD"'
 
 #ruby/rails
 alias r="ruby"

@@ -2,9 +2,12 @@
 - link:
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
+    ~/.nvimrc: nvimrc
     ~/.pryrc: pryrc
     ~/.zshrc: zshrc
+    ~/.zprofile: zprofile
     ~/.vim: vim/
+    ~/.nvim: vim/
     ~/.aliases.zsh: aliases.zsh
 - shell:
     - [git pull && git submodule update --init --recursive, Installing/updating submodules]

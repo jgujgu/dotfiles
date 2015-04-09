@@ -44,6 +44,9 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-surround'
+Plugin 'hwartig/vim-seeing-is-believing'
+Plugin 'mhinz/vim-startify'
 
 call vundle#end()
 
@@ -86,6 +89,7 @@ set showcmd " display incomplete commands
 set autoread " Auto-reload buffers when file changed on disk
 set expandtab " use spaces, not tabs (optional)
 set backspace=indent,eol,start " backspace through everything in insert mode
+set shortmess+=I
 
 "hide very last line because of redundancy
 set noshowmode
@@ -100,9 +104,11 @@ nnoremap <Leader>h :!open -a firefox http://localhost:3000/
 nnoremap <Leader>e :e<Space>
 nnoremap <Leader>v :vsp<CR>
 nnoremap <Leader>s :sp<CR>
+nnoremap <Leader>- :PluginInstall<CR>
 nnoremap <Leader>4 :Rename<Space>
 nnoremap <Leader>f :%s/
 nnoremap <Leader>d :!mkdir<Space>
+nnoremap <Leader>ct :ColorToggle<CR>
 nmap <Leader><Leader> V
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
@@ -134,18 +140,19 @@ let g:multi_cursor_prev_key='<C-,>'
 let g:multi_cursor_skip_key='<C-.>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" Plugin key-mappings.
+"Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
+ "SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
             \ "\<Plug>(neosnippet_expand_or_jump)"
             \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
             \ "\<Plug>(neosnippet_expand_or_jump)"
             \: "\<TAB>"
+
 " Running jasmine-node tests from Vim with Vimux
 map <Leader>j :w %<cr>:call VimuxRunCommand("clear; jasmine-node --verbose " . bufname("%"))<cr>
 
@@ -322,3 +329,23 @@ autocmd! User GoyoLeave
 autocmd  User GoyoEnter nested call <SID>goyo_enter()
 autocmd  User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <Leader>g :Goyo<CR>
+
+"startify
+let g:startify_custom_header = [
+\ '',
+\ '',
+\ '         大凡读书，不能无疑。 - 赵孟頫',
+\ '         Dàfán dúshū, bùnéng wúyí.',
+\ '         Doubts and questions should abound in reading.',
+\ '',
+\ '',
+\ ]
+
+"seeing is believing
+nmap <buffer> <F5> <Plug>(seeing-is-believing-run)
+xmap <buffer> <F5> <Plug>(seeing-is-believing-run)
+imap <buffer> <F5> <Plug>(seeing-is-believing-run)
+
+nmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+xmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+imap <buffer> <F4> <Plug>(seeing-is-believing-mark)
