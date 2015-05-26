@@ -8,6 +8,9 @@ alias pin="~/Desktop/pinyintype"
 alias down="~/Desktop/down"
 alias tu="~/Turing"
 alias rls="~/Turing/rs/rails"
+alias res="redis-server"
+alias red="redis-cli"
+alias di="~/Turing/rs/rails/diffepedia"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -15,13 +18,14 @@ alias on="sudo kextload /System/Library/Extensions/AppleUSBTopCase.kext/Contents
 
 #editors
 alias v="vim $1"
+alias v.="vim ."
 alias n="nvim $1"
 alias s="sublime $1"
 alias a="atom $1"
 alias l="ls"
 
 #firefox
-alias ff="open -a firefox"
+alias ff="open -a FirefoxDeveloperEdition"
 
 #git
 alias git="hub"
@@ -85,6 +89,11 @@ alias routes="rake routes"
 alias bi="bundle install"
 alias ri="rails g rspec:install"
 alias u="unicorn"
+alias in="sudo gem install"
+
+#nodejs
+alias ns="npm start"
+alias ni="npm install"
 
 #volt
 alias vs="volt server"
@@ -92,6 +101,8 @@ alias vc="volt console"
 
 #go
 alias g="go run *"
+alias ig="go-eval"
+alias gt="go test -v"
 
 #other
 alias m="mongo"
@@ -102,6 +113,7 @@ alias ct="cd ~/turing"
 alias ctr="cd ~/turing/rs"
 alias er="cd ~/exercism/ruby"
 alias ej="cd ~/exercism/javascript"
+alias eg="cd ~/exercism/go"
 alias mongofind="ps -Aef | grep mongo"
 alias findp="lsof -i"
 alias eniac="java -jar eniac.jar"
@@ -136,7 +148,7 @@ case "$1" in
     that) query="search?q=${s//[[:space:]]/+}" ;;
     *)    s="$*"; query="search?q=${s//[[:space:]]/+}" ;;
 esac
-open -a firefox "http://www.google.com/${query}"
+open -a FirefoxDeveloperEdition "http://www.google.com/${query}"
 }
 
 function wi() {
@@ -147,7 +159,7 @@ case "$1" in
     that) query="${s//[[:space:]]/_}" ;;
     *)    s="$*"; query="${s//[[:space:]]/_}" ;;
 esac
-open -a firefox "https://en.wikipedia.org/wiki/${query}"
+open -a FirefoxDeveloperEdition "https://en.wikipedia.org/wiki/${query}"
 }
 
 function killag {
@@ -160,7 +172,7 @@ mkdir -p "$@" && cd "$@"
 }
 
 function rails_pg() {
-rails new $1 -T -B --database=postgresql
+rails new $1 -T -B --skip-turbolinks --database=postgresql
 cd $1
 add_rails_gems
 bundle
@@ -169,4 +181,19 @@ git init
 git add .
 git commit -m "initial commit"
 vim .;
+}
+
+function add_rails_gems() {
+
+echo "
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'pry-rails'
+  gem 'awesome_print'
+  gem 'irbtools'
+  gem 'better_errors'
+end
+" >> Gemfile;
+
 }

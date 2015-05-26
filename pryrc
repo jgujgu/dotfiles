@@ -45,13 +45,23 @@ end
 " ================ Convenience methods ======"
 # Stolen from https://gist.github.com/807492
 # Use Array.toy or Hash.toy to get an array or hash to play with
-class Array
+    class Array
 def self.toy(n=10, &block)
-block_given? ? Array.new(n,&block) : Array.new(n) {|i| i+1}
-end
-end
-class Hash
+    block_given? ? Array.new(n,&block) : Array.new(n) {|i| i+1}
+    end
+    end
+    class Hash
 def self.toy(n=10)
-Hash[Array.toy(n).zip(Array.toy(n){|c| (96+(c+1)).chr})]
+    Hash[Array.toy(n).zip(Array.toy(n){|c| (96+(c+1)).chr})]
+    end
+    end
+if defined?(PryByebug)
+    Pry.commands.alias_command 'c', 'continue'
+    Pry.commands.alias_command 's', 'step'
+    Pry.commands.alias_command 'n', 'next'
+    Pry.commands.alias_command 'f', 'finish'
 end
+# Hit Enter to repeat last command
+Pry::Commands.command /^$/, "repeat last command" do
+  _pry_.run_command Pry.history.to_a.last
 end

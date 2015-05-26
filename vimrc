@@ -45,8 +45,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-surround'
-Plugin 'hwartig/vim-seeing-is-believing'
-Plugin 'mhinz/vim-startify'
+Plugin 'kien/rainbow_parentheses.vim'
 
 call vundle#end()
 
@@ -106,6 +105,7 @@ nnoremap <Leader>v :vsp<CR>
 nnoremap <Leader>s :sp<CR>
 nnoremap <Leader>- :PluginInstall<CR>
 nnoremap <Leader>4 :Rename<Space>
+nnoremap <Leader>c :!go test<CR>
 nnoremap <Leader>f :%s/
 nnoremap <Leader>d :!mkdir<Space>
 nnoremap <Leader>ct :ColorToggle<CR>
@@ -116,6 +116,9 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap jf <esc>
 inoremap fj <esc>
 map <C-i> :NERDTreeToggle<CR>
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 "ruby debug abbrev
 iabbr bb byebug
@@ -249,7 +252,7 @@ endfunction
 
 "syntastic and rubocop stuff
 let g:vimrubocop_keymap = 0
-nmap <Leader>c :RuboCop<CR>
+"nmap <Leader>c :RuboCop<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -330,22 +333,42 @@ autocmd  User GoyoEnter nested call <SID>goyo_enter()
 autocmd  User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <Leader>g :Goyo<CR>
 
-"startify
-let g:startify_custom_header = [
-\ '',
-\ '',
-\ '         大凡读书，不能无疑。 - 赵孟頫',
-\ '         Dàfán dúshū, bùnéng wúyí.',
-\ '         Doubts and questions should abound in reading.',
-\ '',
-\ '',
-\ ]
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
-"seeing is believing
-nmap <buffer> <F5> <Plug>(seeing-is-believing-run)
-xmap <buffer> <F5> <Plug>(seeing-is-believing-run)
-imap <buffer> <F5> <Plug>(seeing-is-believing-run)
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-nmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
-xmap <buffer> <F4> <Plug>(seeing-is-believing-mark)
-imap <buffer> <F4> <Plug>(seeing-is-believing-mark)
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
+" Rainbow
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
