@@ -6,6 +6,7 @@
     ~/.pryrc: pryrc
     ~/.zshrc: zshrc
     ~/.zprofile: zprofile
+    ~/.eslintrc: eslintrc
     ~/.vim: vim/
     ~/.nvim: vim/
     ~/.aliases.zsh: aliases.zsh

@@ -101,6 +101,7 @@ alias vc="volt console"
 
 #go
 alias g="go run *"
+alias gr="go run"
 alias ig="go-eval"
 alias gt="go test -v"
 

@@ -8,7 +8,6 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-bundler'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'myusuf3/numbers.vim'
@@ -45,8 +44,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-surround'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'mxw/vim-jsx'
+Plugin 'Shougo/neocomplcache.vim'
 
 call vundle#end()
 
@@ -95,9 +93,6 @@ set shortmess+=I
 set noshowmode
 set laststatus=10
 
-" Allow JSX in normal JS files
-let g:jsx_ext_required = 0
-
 " ================ Leader and other mappings =======================
 let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
@@ -107,9 +102,7 @@ nnoremap <Leader>h :!open -a firefox http://localhost:3000/
 nnoremap <Leader>e :e<Space>
 nnoremap <Leader>v :vsp<CR>
 nnoremap <Leader>s :sp<CR>
-nnoremap <Leader>- :PluginInstall<CR>
 nnoremap <Leader>4 :Rename<Space>
-nnoremap <Leader>c :!go test<CR>
 nnoremap <Leader>f :%s/
 nnoremap <Leader>d :!mkdir<Space>
 nnoremap <Leader>ct :ColorToggle<CR>
@@ -120,9 +113,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap jf <esc>
 inoremap fj <esc>
 map <C-i> :NERDTreeToggle<CR>
-
-" bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 "ruby debug abbrev
 iabbr bb byebug
@@ -147,19 +137,18 @@ let g:multi_cursor_prev_key='<C-,>'
 let g:multi_cursor_skip_key='<C-.>'
 let g:multi_cursor_quit_key='<Esc>'
 
-"Plugin key-mappings.
+" Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
- "SuperTab like snippets behavior.
+" SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
             \ "\<Plug>(neosnippet_expand_or_jump)"
             \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
             \ "\<Plug>(neosnippet_expand_or_jump)"
             \: "\<TAB>"
-
 " Running jasmine-node tests from Vim with Vimux
 map <Leader>j :w %<cr>:call VimuxRunCommand("clear; jasmine-node --verbose " . bufname("%"))<cr>
 
@@ -180,7 +169,7 @@ map <Leader>a :call RunAllSpecs()<CR>
 
 " ================ Completion =======================
 " Stuff to ignore when tab completing
-let g:neocomplete#enable_at_startup = 1
+let g:neocomplcache_enable_at_startup = 1
 set wildmode=list:longest
 set wildignore=*.o,*.obj,*~
 set wildignore+=*vim/backups*
@@ -216,7 +205,6 @@ let g:lightline = {
             \ 'separator': { 'left': '', 'right': '' },
             \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
             \ }
-
 
 " Lightline functions
 function! MyReadonly()
@@ -257,7 +245,7 @@ endfunction
 
 "syntastic and rubocop stuff
 let g:vimrubocop_keymap = 0
-"nmap <Leader>c :RuboCop<CR>
+nmap <Leader>c :RuboCop<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -337,43 +325,3 @@ autocmd! User GoyoLeave
 autocmd  User GoyoEnter nested call <SID>goyo_enter()
 autocmd  User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <Leader>g :Goyo<CR>
-
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-" bind \ (backward slash) to grep shortcut
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
-
-" Rainbow
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
