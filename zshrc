@@ -20,6 +20,10 @@ foreach file (`echo $sources`)
     fi
 end
 
+#export gopath
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 # Fast switch from vim with ctrl-z
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then

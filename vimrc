@@ -30,8 +30,6 @@ Plugin 'ervandew/sgmlendtag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-ragtag'
-Plugin 'scrooloose/syntastic'
-Plugin 'ngmy/vim-rubocop'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'othree/html5.vim'
@@ -47,6 +45,7 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 
@@ -63,9 +62,6 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 set nofoldenable "dont fold by default
-
-" Highlight current line and colors
-set cursorline
 
 "No sounds
 set visualbell
@@ -235,11 +231,21 @@ function! MyFugitive()
     return ''
 endfunction
 
-" Error symbols
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"Syntastic checkers
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jsxhint']
+
+"Error symbols
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_style_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_warning_symbol = "⚠"
+
+"Syntastic Checkers
 
 function! MyLineInfo()
     return '🌞 ' . line('.') . '/' . line('$')
@@ -247,20 +253,13 @@ endfunction
 
 augroup AutoSyntastic
     autocmd!
-    autocmd BufWritePost *.rb,*.js,*.css,*.sh call s:syntastic()
+    autocmd BufWritePost *.rb,*.js,*.css,*.sh,*.go call s:syntastic()
 augroup END
 
 function! s:syntastic()
     SyntasticCheck
     call lightline#update()
 endfunction
-
-"syntastic and rubocop stuff
-let g:vimrubocop_keymap = 0
-"nmap <Leader>c :RuboCop<CR>
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 " ================ Misc =======================
 "autosave in tmux
