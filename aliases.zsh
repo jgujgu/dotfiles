@@ -22,10 +22,10 @@ alias v.="vim ."
 alias n="nvim $1"
 alias s="sublime $1"
 alias a="atom $1"
-alias l="ls"
+alias l="ls -A"
 
 #firefox
-alias ff="open -a FirefoxDeveloperEdition"
+alias ff="open -a Firefox"
 
 #git
 alias git="hub"
@@ -122,7 +122,6 @@ alias t="tree"
 alias b="bundle"
 alias c="clear;ls"
 alias archflags='ARCHFLAGS="-arch x86_64" bundle install'
-alias cd='cs'
 
 #alias file
 alias ale="v ~/.dotfiles/aliases.zsh"
@@ -149,7 +148,7 @@ case "$1" in
     that) query="search?q=${s//[[:space:]]/+}" ;;
     *)    s="$*"; query="search?q=${s//[[:space:]]/+}" ;;
 esac
-open -a FirefoxDeveloperEdition "http://www.google.com/${query}"
+open -a Firefox "http://www.google.com/${query}"
 }
 
 function wi() {
@@ -160,7 +159,7 @@ case "$1" in
     that) query="${s//[[:space:]]/_}" ;;
     *)    s="$*"; query="${s//[[:space:]]/_}" ;;
 esac
-open -a FirefoxDeveloperEdition "https://en.wikipedia.org/wiki/${query}"
+open -a Firefox "https://en.wikipedia.org/wiki/${query}"
 }
 
 function killag {
