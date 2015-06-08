@@ -11,6 +11,7 @@ alias rls="$HOME/Turing/rs/rails"
 alias res="redis-server"
 alias red="redis-cli"
 alias di="$HOME/Turing/rs/rails/diffepedia"
+#test change
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
