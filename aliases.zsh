@@ -3,14 +3,14 @@ alias rzp="source ~/.zprofile"
 
 #convenience
 alias ..="cd .."
-alias desk="~/Desktop"
-alias pin="~/Desktop/pinyintype"
-alias down="~/Desktop/down"
-alias tu="~/Turing"
-alias rls="~/Turing/rs/rails"
+alias desk="$HOME/Desktop"
+alias pin="$HOME/Desktop/pinyintype"
+alias down="$HOME/Desktop/down"
+alias tu="$HOME//Turing"
+alias rls="$HOME/Turing/rs/rails"
 alias res="redis-server"
 alias red="redis-cli"
-alias di="~/Turing/rs/rails/diffepedia"
+alias di="$HOME/Turing/rs/rails/diffepedia"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -110,11 +110,9 @@ alias m="mongo"
 alias be="bundle exec"
 alias es="exercism submit"
 alias ef="exercism fetch"
-alias ct="cd ~/turing"
-alias ctr="cd ~/turing/rs"
-alias er="cd ~/exercism/ruby"
-alias ej="cd ~/exercism/javascript"
-alias eg="cd ~/exercism/go"
+alias er="cd $HOME/exercism/ruby"
+alias ej="cd $HOME/exercism/javascript"
+alias eg="cd $HOME/exercism/go"
 alias mongofind="ps -Aef | grep mongo"
 alias findp="lsof -i"
 alias eniac="java -jar eniac.jar"
@@ -124,20 +122,11 @@ alias c="clear;ls"
 alias archflags='ARCHFLAGS="-arch x86_64" bundle install'
 
 #alias file
-alias ale="v ~/.dotfiles/aliases.zsh"
-alias vimrc="v ~/.dotfiles/vimrc"
-alias dot="~/.dotfiles"
-alias snip='v ~/.dotfiles/vim/bundle/vim-snippets/UltiSnips'
-alias snips='~/.dotfiles/vim/bundle/vim-snippets/UltiSnips'
-
-# ls automatically after cd
-function cs() {
-if [ $# -eq 0 ]; then
-    cd && ls
-else
-    cd "$*" && ls
-fi
-}
+alias ale="v $HOME/dotfiles/aliases.zsh"
+alias vimrc="v $HOME/dotfiles/vimrc"
+alias dot="cd $HOME/dotfiles"
+alias snip="v $HOME/dotfiles/vim/bundle/vim-snippets/UltiSnips"
+alias snips="$HOME/dotfiles/vim/bundle/vim-snippets/UltiSnips"
 
 # command line search google and wikipedia
 function goo() {
