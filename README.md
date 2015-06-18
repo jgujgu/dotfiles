@@ -1,6 +1,6 @@
 Readme mostly copied from indiesquidge. ;D I've learned most of what I know about dotfiles from him. Actually, all.
 
-Focused heavily on Tmux, Vim, Zsh, and Prezto integration.
+Focused heavily on Tmux, Vim, Zsh, and Antigen integration.
 ![](http://i.imgur.com/3Aajw58.png?1)
 
 ## Installation
@@ -33,30 +33,6 @@ After which, the custom plugins can be installed.
 vim +PluginInstall +qall
 ``
 The plugins I use are documented inside of my vimrc file above each plugin.
-
-### Prezto
-[Prezto](https://github.com/sorin-ionescu/prezto) is an amazing configuration
-framework for Zsh. It provides nice aliases, functions, auto-completetions, and
-pretty prompt themes.
-
-The only downside to it is the installation, which I am in the process of making
-it install automatically with my dotfiles. For now, you have to follow this process:
-
-clone the repo into ~/.zprezto
-``
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-``
-
-Run the following on your command line to have prezto configure it's Zsh preferences
-``
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
-``
-
-Read the docs on the main Prezto page to change your prompt, install modules (for nicely
-    wrapped functions and aliases), and further customization.
 
 ###iTerm2
 
