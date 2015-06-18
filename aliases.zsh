@@ -124,6 +124,7 @@ alias archflags='ARCHFLAGS="-arch x86_64" bundle install'
 
 #alias file
 alias ale="v $HOME/dotfiles/aliases.zsh"
+alias tx="v $HOME/dotfiles/tmux.conf"
 alias vimrc="v $HOME/dotfiles/vimrc"
 alias zshrc="v $HOME/dotfiles/zshrc"
 alias dot="cd $HOME/dotfiles"
