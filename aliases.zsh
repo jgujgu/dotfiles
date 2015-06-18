@@ -1,17 +1,16 @@
-#reset
-alias rzp="source ~/.zprofile"
-
 #convenience
 alias ..="cd .."
 alias desk="$HOME/Desktop"
 alias pin="$HOME/Desktop/pinyintype"
 alias down="$HOME/Desktop/down"
 alias tu="$HOME//Turing"
-alias rls="$HOME/Turing/rs/rails"
+alias rls="$HOME/Turing/rails/"
 alias res="redis-server"
 alias red="redis-cli"
 alias di="$HOME/Turing/rs/rails/diffepedia"
-#test change
+alias sphero="ls /dev | ag Sphero"
+alias spx="$HOME/Turing/js/sphero_ex"
+alias w="ansiweather"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -46,7 +45,7 @@ alias gam="git commit -a -m"
 alias gcb="git checkout -b"
 alias gb="git branch"
 alias gr="git rebase"
-alias gpb="git push --set-upstream origin"
+alias gpb="git push --set-upstream origin HEAD"
 alias gl="git log --all --graph --decorate" # detailed log
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset \
 %an: %s - %Creset %C(yellow)%d%Creset \
@@ -125,6 +124,7 @@ alias archflags='ARCHFLAGS="-arch x86_64" bundle install'
 #alias file
 alias ale="v $HOME/dotfiles/aliases.zsh"
 alias vimrc="v $HOME/dotfiles/vimrc"
+alias zshrc="v $HOME/dotfiles/zshrc"
 alias dot="cd $HOME/dotfiles"
 alias snip="v $HOME/dotfiles/vim/bundle/vim-snippets/UltiSnips"
 alias snips="$HOME/dotfiles/vim/bundle/vim-snippets/UltiSnips"

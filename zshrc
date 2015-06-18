@@ -1,19 +1,28 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+source ~/antigen.zsh
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle heroku
+antigen bundle pip
+antigen bundle lein
+antigen bundle command-not-found
+antigen bundle fcambus/ansiweather
+
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen theme miloshadzic
+
+# Tell antigen that you're done.
+antigen apply
 
 typeset -ga sources
-
 sources+="$HOME/.aliases.zsh"
-
 foreach file (`echo $sources`)
     if [[ -a $file ]]; then
         source $file
@@ -24,7 +33,6 @@ end
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-# Fast switch from vim with ctrl-z
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
     BUFFER="dk"
@@ -44,3 +52,5 @@ bindkey -M viins 'fj' vi-cmd-mode
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+unsetopt beep
+source ~/.rvm/scripts/rvm
