@@ -158,32 +158,45 @@ function killag {
 kill $(ps aux | ag $1 | ag -v "grep" | awk '{print $2}')
 }
 
-# Create a new directory and enter it
-function md() {
-mkdir -p "$@" && cd "$@"
+# cd to dotfile repo and open in editor
+function dotf() {
+  cd ~/.dotfiles && Subl .
+}
+
+# create a new directory and enter it
+function mkd() {
+  if [ $# -lt 1 ]; then
+    echo "Missing argument";
+    return 1;
+  fi
+
+  mkdir -p "$@" && cd "$@"
 }
 
 function rails_pg() {
-rails new $1 -T -B --skip-turbolinks --database=postgresql
-cd $1
-add_rails_gems
-bundle
-rails generate rspec:install
-git init
-git add .
-git commit -m "initial commit"
-vim .;
+  rails new $1 -T -B --skip-turbolinks --database=postgresql
+
+  cd $1
+
+  add_rails_gems
+  bundle
+  rails generate rspec:install
+
+  git init
+  git add .
+  git commit -m "initial commit"
+
+  vim .;
 }
 
 function add_rails_gems() {
 
 echo "
-group :test, :development do
+group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'pry-rails'
   gem 'awesome_print'
-  gem 'irbtools'
   gem 'better_errors'
 end
 " >> Gemfile;
