@@ -11,6 +11,7 @@ alias di="$HOME/Turing/rs/rails/diffepedia"
 alias sphero="ls /dev | ag Sphero"
 alias spx="$HOME/Turing/js/sphero_ex"
 alias w="ansiweather"
+alias sb="screenbrightness"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
