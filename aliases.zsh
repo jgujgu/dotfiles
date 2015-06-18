@@ -12,6 +12,7 @@ alias sphero="ls /dev | ag Sphero"
 alias spx="$HOME/Turing/js/sphero_ex"
 alias w="ansiweather"
 alias sb="screenbrightness"
+alias md="mkdir"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -160,7 +161,7 @@ kill $(ps aux | ag $1 | ag -v "grep" | awk '{print $2}')
 
 # cd to dotfile repo and open in editor
 function dotf() {
-  cd ~/.dotfiles && Subl .
+  cd ~/.dotfiles && vim .
 }
 
 # create a new directory and enter it
