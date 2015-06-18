@@ -19,6 +19,8 @@ Symlinking is handled via [Dotbot](https://github.com/anishathalye/dotbot):
 cd ~/.dotfiles
 ./install
 ``
+###Install Antigen
+Antigen instructions go here.
 
 ###Vundle
 Vim Plugins are handled via [Vundle](https://github.com/gmarik/Vundle.vim),
