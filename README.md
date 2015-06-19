@@ -1,7 +1,7 @@
 Readme mostly copied from indiesquidge. ;D I've learned most of what I know about dotfiles from him. Actually, all.
 
 Focused heavily on Tmux, Vim, Zsh, and Antigen integration.
-![](http://i.imgur.com/gNtp07W.png)
+![](http://i.imgur.com/rph6IE9.png)
 
 ## Installation
 
