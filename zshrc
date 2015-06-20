@@ -1,21 +1,42 @@
-source ~/antigen.zsh
+#source ~/antigen.zsh
 
 # Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+#antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle fcambus/ansiweather
-
+#antigen bundle git
+#antigen bundle fcambus/ansiweather
 
 # Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
+#antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme miloshadzic
+#antigen theme miloshadzic
 
 # Tell antigen that you're done.
-antigen apply
+#antigen apply
+
+# load zgen
+source "${HOME}/zgen/zgen.zsh"
+
+# check if there's no init script
+if ! zgen saved; then
+    echo "Creating a zgen save"
+
+    zgen oh-my-zsh
+
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/sudo
+    zgen oh-my-zsh plugins/command-not-found
+
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load /path/to/super-secret-private-plugin
+    zgen load zsh-users/zsh-completions src
+
+    zgen oh-my-zsh themes/miloshadzic
+
+    zgen save
+fi
 
 typeset -ga sources
 sources+="$HOME/.aliases.zsh"
