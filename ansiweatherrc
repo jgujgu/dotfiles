@@ -1,0 +1,6 @@
+location:Denver,US
+/*location:San Francisco,US*/
+fetch_cmd:ftp -V -o -
+geo_api_url:www.telize.com/geoip
+geo_api_proto:http
+units:imperial

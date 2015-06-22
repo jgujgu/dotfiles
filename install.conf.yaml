@@ -9,5 +9,6 @@
     ~/.vim: vim/
     ~/.nvim: vim/
     ~/.aliases.zsh: aliases.zsh
+    ~/.ansiweatherrc: ansiweatherrc
 - shell:
     - [git pull && git submodule update --init --recursive, Installing/updating submodules]
