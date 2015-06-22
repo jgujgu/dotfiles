@@ -25,6 +25,7 @@ alias n="nvim $1"
 alias s="sublime $1"
 alias a="atom $1"
 alias l="ls -A"
+alias vi="vim"
 
 #firefox
 alias ff="open -a Firefox"

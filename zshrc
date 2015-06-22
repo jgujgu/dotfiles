@@ -55,3 +55,5 @@ bindkey -M viins 'fj' vi-cmd-mode
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 unsetopt beep
 source ~/.rvm/scripts/rvm
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
