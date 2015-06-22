@@ -1,33 +1,24 @@
 source ~/antigen.zsh
 
 antigen use oh-my-zsh
-
 antigen bundle git
 antigen bundle fcambus/ansiweather
-
 antigen bundle zsh-users/zsh-syntax-highlighting
-
 antigen theme miloshadzic
-
 antigen apply
 
 #source "${HOME}/zgen/zgen.zsh"
 
 #if ! zgen saved; then
     #echo "Creating a zgen save"
-
     #zgen oh-my-zsh
-
     #zgen oh-my-zsh plugins/git
     #zgen oh-my-zsh plugins/sudo
     #zgen oh-my-zsh plugins/command-not-found
-
     #zgen load zsh-users/zsh-syntax-highlighting
     #zgen load /path/to/super-secret-private-plugin
     #zgen load zsh-users/zsh-completions src
-
     #zgen oh-my-zsh themes/miloshadzic
-
     #zgen save
 #fi
 
