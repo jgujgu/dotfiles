@@ -132,6 +132,10 @@ alias dot="cd $HOME/dotfiles"
 alias snip="v $HOME/dotfiles/vim/bundle/vim-snippets/UltiSnips"
 alias snips="$HOME/dotfiles/vim/bundle/vim-snippets/UltiSnips"
 
+# Empty the Trash on all mounted volumes and the main HDD
+# Also, clear Apple’s System Logs to improve shell startup speed
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
 # command line search google and wikipedia
 function goo() {
 local s="$_"
