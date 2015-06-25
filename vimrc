@@ -5,10 +5,10 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-bundler'
 Plugin 'Shougo/neocomplete.vim'
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'vim-ruby/vim-ruby'
@@ -67,7 +67,7 @@ set visualbell
 " Set 80 character ruler and colors
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn cterm=NONE ctermbg=0"
-:colorscheme base16-brewer
+:colorscheme base16-solarized
 set noswapfile
 set autowrite
 set softtabstop=2
@@ -76,6 +76,7 @@ set background=dark
 set modifiable
 set ignorecase
 set ic
+set rnu
 set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
 set scrolloff=4 " adds top/bottom buffer between cursor and window
 set number " line numbers

@@ -25,7 +25,7 @@ alias n="nvim $1"
 alias s="sublime $1"
 alias a="atom $1"
 alias l="ls -A"
-alias vi="vim"
+alias vi="v"
 
 #firefox
 alias ff="open -a Firefox"
@@ -36,6 +36,7 @@ alias gs="git status"
 alias gd="git branch -d"
 alias gc="git checkout"
 alias ga="git add"
+alias gaa="git add ."
 alias gm="git merge"
 alias gmm="git merge master"
 alias gcm="git commit -m"
@@ -80,10 +81,11 @@ alias nw='tmux new-window -c "$PWD"'
 alias r="ruby"
 alias i="irb"
 alias ra="rails"
-alias rs="ra s"
+alias rs="ra s -p 3001"
 alias rk="rake"
 alias sg="shotgun"
 alias rc="rails c"
+alias dbc="bundle exec rake db:create"
 alias dbm="bundle exec rake db:migrate"
 alias dbset="bundle exec rake db:setup"
 alias dbr="bundle exec rake db:reset db:seed"
@@ -202,7 +204,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'pry-rails'
-  gem 'awesome_print'
   gem 'better_errors'
 end
 " >> Gemfile;
