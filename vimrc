@@ -98,7 +98,6 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :wq<CR>
 nnoremap <Leader>1 :q!<CR>
-nnoremap <Leader>h :!open -a firefox http://localhost:3000/
 nnoremap <Leader>e :e<Space>
 nnoremap <Leader>v :vsp<CR>
 nnoremap <Leader>s :sp<CR>
@@ -237,7 +236,7 @@ set statusline+=%*
 
 "Syntastic checkers
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jsxhint']
 
 "Error symbols
 let g:syntastic_error_symbol = "✗"

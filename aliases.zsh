@@ -13,6 +13,8 @@ alias spx="$HOME/Turing/js/sphero_ex"
 alias w="ansiweather"
 alias sb="screenbrightness"
 alias md="mkdir"
+alias idea="v ~/Downloads/idea.txt"
+alias sw="sass --watch styles.scss:styles.css"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -77,6 +79,9 @@ alias tks="tmux kill-server"
 alias x="exit"
 alias nw='tmux new-window -c "$PWD"'
 
+#python
+alias p="python"
+
 #ruby/rails
 alias r="ruby"
 alias i="irb"
@@ -116,6 +121,7 @@ alias be="bundle exec"
 alias es="exercism submit"
 alias ef="exercism fetch"
 alias er="cd $HOME/exercism/ruby"
+alias ep="cd $HOME/exercism/python"
 alias ej="cd $HOME/exercism/javascript"
 alias eg="cd $HOME/exercism/go"
 alias mongofind="ps -Aef | grep mongo"
