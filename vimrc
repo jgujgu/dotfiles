@@ -22,8 +22,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'terryma/vim-expand-region'
-Bundle 'skalnik/vim-vroom'
-Bundle 'christoomey/vim-tmux-navigator'
+Plugin 'skalnik/vim-vroom'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ervandew/sgmlendtag'
 Plugin 'pangloss/vim-javascript'
 Plugin 'terryma/vim-multiple-cursors'
@@ -108,6 +108,7 @@ nnoremap <Leader>f :%s/
 nnoremap <Leader>d :!mkdir<Space>
 nnoremap <Leader>ct :ColorToggle<CR>
 nnoremap <Leader>i mzgg=G`z<CR>
+nnoremap <BS> <C-o>
 nmap <Leader><Leader> V
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
