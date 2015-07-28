@@ -201,6 +201,7 @@ let g:lightline = {
             \ 'component_function': {
             \ 'fugitive': 'MyFugitive',
             \ 'readonly': 'MyReadonly',
+            \ 'filetype': 'MyFiletype',
             \ 'lineinfo': 'MyLineInfo'
             \ },
             \ 'component_expand': {
@@ -210,7 +211,7 @@ let g:lightline = {
             \ 'syntastic': 'error',
             \ },
             \ 'separator': { 'left': '', 'right': '' },
-            \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+            \ 'subseparator': { 'left': '| ', 'right': '| ' }
             \ }
 
 
@@ -223,10 +224,15 @@ function! MyReadonly()
     endif
 endfunction
 
+function! MyFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
 function! MyFugitive()
     if exists('*fugitive#head')
         let _ = fugitive#head()
         return strlen(_) ? '🍆 '._ : ''
+        return winwidth(0) > 70 ? (strlen(_) ? '💥 '._ : '') : ''
     endif
     return ''
 endfunction
@@ -249,6 +255,7 @@ let g:syntastic_style_warning_symbol = "⚠"
 
 function! MyLineInfo()
     return '🌞 ' . line('.') . '/' . line('$')
+    return winwidth(0) > 70 ? '🌞 ' . line('.') . '/' . line('$') : ''
 endfunction
 
 augroup AutoSyntastic
