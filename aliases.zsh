@@ -15,6 +15,10 @@ alias sb="screenbrightness"
 alias md="mkdir"
 alias idea="v ~/Downloads/idea.txt"
 alias sw="sass --watch styles.scss:styles.css"
+alias bl="$HOME/turing/rails/jgu2160.github.io"
+alias blo="vim $HOME/blog/jgu_blog/_drafts/new.markdown"
+alias js="jekyll serve"
+alias o="octave"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"

@@ -44,6 +44,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
+Plugin 'mustache/vim-mustache-handlebars'
 
 call vundle#end()
 
@@ -300,7 +301,7 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " strip trailing whi
 " Detect file type for indentation below
 :filetype indent on
 " " Use 4 space indentation on all files
-:autocmd FileType * set ai sw=4 sts=4 et
+":autocmd FileType * set ai sw=4 sts=4 et
 " Use 2 space indentation on Ruby and YAML files
 :autocmd FileType ruby,eruby,yaml,javascript,css,scss,html set ai sw=2 sts=2 et
 
@@ -392,3 +393,5 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
             \ --ignore .DS_Store
             \ --ignore "**/*.pyc"
             \ -g ""'
+
+let g:mustache_abbreviations = 1
