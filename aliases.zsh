@@ -1,5 +1,5 @@
 #convenience
-alias ..="cd .."
+alias .="cd .."
 alias desk="$HOME/Desktop"
 alias pin="$HOME/Desktop/pinyintype"
 alias down="$HOME/Desktop/down"
