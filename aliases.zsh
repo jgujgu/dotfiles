@@ -19,6 +19,8 @@ alias bl="$HOME/turing/rails/jgu2160.github.io"
 alias blo="vim $HOME/blog/jgu_blog/_drafts/new.markdown"
 alias js="jekyll serve"
 alias o="octave"
+alias mat="$HOME/Documents/MATLAB"
+alias tinder="bash ~/Documents/ml/tinderbox/dist/tinderbox-1.1-SNAPSHOT/bin/tinderbox"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -219,3 +221,5 @@ end
 " >> Gemfile;
 
 }
+
+export _JAVA_OPTIONS="-XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -Xms2G -Xmx4G -Xss1024m -XX:MaxPermSize=4G"
