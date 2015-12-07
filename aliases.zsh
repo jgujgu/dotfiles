@@ -19,6 +19,9 @@ alias bl="$HOME/turing/rails/jgu2160.github.io"
 alias blo="vim $HOME/blog/jgu_blog/_drafts/new.markdown"
 alias js="jekyll serve"
 alias o="octave"
+alias mat="$HOME/Documents/MATLAB"
+alias tinder="bash ~/Documents/ml/tinderbox/dist/tinderbox-1.1-SNAPSHOT/bin/tinderbox"
+alias rand="lynx https://en.wikipedia.org/wiki/Special:Random"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -61,6 +64,7 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset \
 %an: %s - %Creset %C(yellow)%d%Creset \
 %Cgreen(%cr)%Creset' --abbrev-commit --date=relative" # pretty log
 alias gph="git push heroku master"
+alias gdo="git push origin --delete"
 
 # Log
 zstyle -s ':prezto:module:git:log:medium' format '_git_log_medium_format' \
@@ -219,3 +223,5 @@ end
 " >> Gemfile;
 
 }
+
+export _JAVA_OPTIONS="-XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -Xms2G -Xmx4G -Xss1024m -XX:MaxPermSize=4G"

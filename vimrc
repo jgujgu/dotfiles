@@ -45,6 +45,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'digitaltoad/vim-jade'
 
 call vundle#end()
 
