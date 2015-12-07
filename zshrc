@@ -33,6 +33,9 @@ end
 #export gopath
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$HOME/anaconda/bin:$PATH
+export PATH=$HOME/torch/install/bin:$PATH
+sh /Users/jgujgu/torch/install/bin/torch-activate
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -57,3 +60,4 @@ unsetopt beep
 source ~/.rvm/scripts/rvm
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
+
