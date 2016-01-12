@@ -22,6 +22,8 @@ alias o="octave"
 alias mat="$HOME/Documents/MATLAB"
 alias tinder="bash ~/Documents/ml/tinderbox/dist/tinderbox-1.1-SNAPSHOT/bin/tinderbox"
 alias rand="lynx https://en.wikipedia.org/wiki/Special:Random"
+alias d162='eval "$(docker-machine env docker162)"'
+alias docker_delete='docker rmi $(docker images -q -a)'
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -65,6 +67,16 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset \
 %Cgreen(%cr)%Creset' --abbrev-commit --date=relative" # pretty log
 alias gph="git push heroku master"
 alias gdo="git push origin --delete"
+alias grc="git rebase --continue"
+alias gri="git rebase -i"
+alias gsta="git stash"
+alias gco="git commit"
+
+#utopia
+alias uvds='utopia --verbose deploy status'
+alias uds='utopia deploy status'
+alias wuds="watch -c -d -n 5 'utopia deploy status'"
+alias udd='utopia deploy -b development'
 
 # Log
 zstyle -s ':prezto:module:git:log:medium' format '_git_log_medium_format' \
@@ -102,6 +114,7 @@ alias dbc="bundle exec rake db:create"
 alias dbm="bundle exec rake db:migrate"
 alias dbset="bundle exec rake db:setup"
 alias dbr="bundle exec rake db:reset db:seed"
+alias explode="rake db:drop db:create db:reset db:seed"
 alias be="bundle exec"
 alias routes="rake routes"
 alias bi="bundle install"

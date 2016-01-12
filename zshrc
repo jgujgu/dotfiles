@@ -36,6 +36,13 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$HOME/anaconda/bin:$PATH
 export PATH=$HOME/torch/install/bin:$PATH
 sh /Users/jgujgu/torch/install/bin/torch-activate
+MYSQL=/usr/local/mysql/bin
+export PATH=$PATH:$MYSQL
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+export VISUAL=vim
+export EDITOR="$VISUAL"
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -60,4 +67,4 @@ unsetopt beep
 source ~/.rvm/scripts/rvm
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
-
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
