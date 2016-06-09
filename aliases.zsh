@@ -21,9 +21,9 @@ alias js="jekyll serve"
 alias o="octave"
 alias mat="$HOME/Documents/MATLAB"
 alias tinder="bash ~/Documents/ml/tinderbox/dist/tinderbox-1.1-SNAPSHOT/bin/tinderbox"
-alias rand="lynx https://en.wikipedia.org/wiki/Special:Random"
 alias d162='eval "$(docker-machine env docker162)"'
 alias docker_delete='docker rmi $(docker images -q -a)'
+alias sqmailer='bundle exec sidekiq -q default -q mailers'
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -45,6 +45,7 @@ alias ff="open -a Firefox"
 alias git="hub"
 alias gs="git status"
 alias gd="git branch -d"
+alias GD="git branch -D"
 alias gc="git checkout"
 alias ga="git add"
 alias gaa="git add ."
@@ -60,6 +61,7 @@ alias gam="git commit -a -m"
 alias gcb="git checkout -b"
 alias gb="git branch"
 alias gr="git rebase"
+alias grid="git rebase -i development"
 alias gpb="git push --set-upstream origin HEAD"
 alias gl="git log --all --graph --decorate" # detailed log
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset \
@@ -76,7 +78,8 @@ alias gco="git commit"
 alias uvds='utopia --verbose deploy status'
 alias uds='utopia deploy status'
 alias wuds="watch -c -d -n 5 'utopia deploy status'"
-alias udd='utopia deploy -b development'
+alias wups="watch -c -d -n 5 'utopia promote status'"
+alias udd='utopia deploy -b development && wuds'
 
 # Log
 zstyle -s ':prezto:module:git:log:medium' format '_git_log_medium_format' \
@@ -119,8 +122,9 @@ alias be="bundle exec"
 alias routes="rake routes"
 alias bi="bundle install"
 alias ri="rails g rspec:install"
-alias u="unicorn"
+alias u="unicorn -c config/unicorn.rb"
 alias in="sudo gem install"
+alias loveme="rails s -p 3000 -b lvh.me"
 
 #nodejs
 alias ns="npm start"

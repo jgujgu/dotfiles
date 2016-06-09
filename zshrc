@@ -43,6 +43,9 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
+export CUDA_HOME=/usr/local/cuda
+export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
+export PATH="$CUDA_HOME/bin:$PATH"
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
