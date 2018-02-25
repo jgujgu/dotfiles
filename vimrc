@@ -46,6 +46,8 @@ Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'digitaltoad/vim-jade'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'isRuslan/vim-es6'
 
 call vundle#end()
 

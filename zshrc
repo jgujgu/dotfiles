@@ -30,9 +30,6 @@ foreach file (`echo $sources`)
     fi
 end
 
-#export gopath
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
 export PATH=$HOME/anaconda/bin:$PATH
 export PATH=$HOME/torch/install/bin:$PATH
 sh /Users/jgujgu/torch/install/bin/torch-activate
@@ -46,6 +43,9 @@ source $(brew --prefix nvm)/nvm.sh
 export CUDA_HOME=/usr/local/cuda
 export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
 export PATH="$CUDA_HOME/bin:$PATH"
+export GOOGLE_APPLICATION_CREDENTIALS=$HOME/turing/speech-transcription-53fc3d00dafe.json
+export GOOGLE_APP_NAME=aerial-reality-135501
+export GOOGLE_BUCKET=transcription-test
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -63,11 +63,16 @@ bindkey -v
 bindkey -M viins 'jf' vi-cmd-mode
 bindkey -M viins 'fj' vi-cmd-mode
 
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 unsetopt beep
 source ~/.rvm/scripts/rvm
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/jgujgu/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/jgujgu/google-cloud-sdk/completion.zsh.inc'
