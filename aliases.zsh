@@ -24,7 +24,6 @@ alias tinder="bash ~/Documents/ml/tinderbox/dist/tinderbox-1.1-SNAPSHOT/bin/tind
 alias d162='eval "$(docker-machine env docker162)"'
 alias docker_delete='docker rmi $(docker images -q -a)'
 alias sqmailer='bundle exec sidekiq -q default -q mailers'
-alias docker_begin="$(docker-machine env default)"
 alias dog="ssh 'jgu@104.236.182.224'"
 alias dol="ssh 'jgu@165.227.12.232'"
 alias dob="ssh 'root@138.68.249.27'"
