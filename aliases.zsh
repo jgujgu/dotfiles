@@ -24,6 +24,11 @@ alias tinder="bash ~/Documents/ml/tinderbox/dist/tinderbox-1.1-SNAPSHOT/bin/tind
 alias d162='eval "$(docker-machine env docker162)"'
 alias docker_delete='docker rmi $(docker images -q -a)'
 alias sqmailer='bundle exec sidekiq -q default -q mailers'
+alias docker_begin="$(docker-machine env default)"
+alias dog="ssh 'jgu@104.236.182.224'"
+alias dol="ssh 'jgu@165.227.12.232'"
+alias dob="ssh 'root@138.68.249.27'"
+alias lake="ssh 'jgu@104.236.183.161'"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -39,7 +44,7 @@ alias l="ls -A"
 alias vi="v"
 
 #firefox
-alias ff="open -a Firefox"
+alias ff="open -a 'Firefox 2'"
 
 #git
 alias git="hub"
@@ -65,8 +70,8 @@ alias grid="git rebase -i development"
 alias gpb="git push --set-upstream origin HEAD"
 alias gl="git log --all --graph --decorate" # detailed log
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset \
-%an: %s - %Creset %C(yellow)%d%Creset \
-%Cgreen(%cr)%Creset' --abbrev-commit --date=relative" # pretty log
+  %an: %s - %Creset %C(yellow)%d%Creset \
+  %Cgreen(%cr)%Creset' --abbrev-commit --date=relative" # pretty log
 alias gph="git push heroku master"
 alias gdo="git push origin --delete"
 alias grc="git rebase --continue"
@@ -83,14 +88,14 @@ alias udd='utopia deploy -b development && wuds'
 
 # Log
 zstyle -s ':prezto:module:git:log:medium' format '_git_log_medium_format' \
-    || _git_log_medium_format='%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset) %C(blue)%ai (%ar)%C(reset)%n%+B'
+  || _git_log_medium_format='%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset) %C(blue)%ai (%ar)%C(reset)%n%+B'
 zstyle -s ':prezto:module:git:log:oneline' format '_git_log_oneline_format' \
-    || _git_log_oneline_format='%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'
+  || _git_log_oneline_format='%C(green)%h%C(reset) %s%C(red)%d%C(reset)%n'
 zstyle -s ':prezto:module:git:log:brief' format '_git_log_brief_format' \
-    || _git_log_brief_format='%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'
+  || _git_log_brief_format='%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'
 # Status
 zstyle -s ':prezto:module:git:status:ignore' submodules '_git_status_ignore_submodules' \
-    || _git_status_ignore_submodules='none'
+  || _git_status_ignore_submodules='none'
 
 #tmux
 alias tn="tmux new -s"
@@ -125,6 +130,7 @@ alias ri="rails g rspec:install"
 alias u="unicorn -c config/unicorn.rb"
 alias in="sudo gem install"
 alias loveme="rails s -p 3000 -b lvh.me"
+alias lm="rails s -p 3000 -b lvh.me"
 
 #nodejs
 alias ns="npm start"
@@ -135,10 +141,10 @@ alias vs="volt server"
 alias vc="volt console"
 
 #go
-alias g="go run *"
-alias gr="go run"
-alias ig="go-eval"
-alias gt="go test -v"
+#alias g="go run *"
+#alias gr="go run"
+#alias ig="go-eval"
+#alias gt="go test -v"
 
 #other
 alias m="mongo"
@@ -175,22 +181,22 @@ function goo() {
 local s="$_"
 local query=
 case "$1" in
-    '')   ;;
-    that) query="search?q=${s//[[:space:]]/+}" ;;
-    *)    s="$*"; query="search?q=${s//[[:space:]]/+}" ;;
+  '')   ;;
+  that) query="search?q=${s//[[:space:]]/+}" ;;
+  *)    s="$*"; query="search?q=${s//[[:space:]]/+}" ;;
 esac
-open -a Firefox "http://www.google.com/${query}"
+open -a 'Firefox 2' "http://www.google.com/${query}"
 }
 
 function wi() {
 local s="$_"
 local query=
 case "$1" in
-    '')   ;;
-    that) query="${s//[[:space:]]/_}" ;;
-    *)    s="$*"; query="${s//[[:space:]]/_}" ;;
+  '')   ;;
+  that) query="${s//[[:space:]]/_}" ;;
+  *)    s="$*"; query="${s//[[:space:]]/_}" ;;
 esac
-open -a Firefox "https://en.wikipedia.org/wiki/${query}"
+open -a "Firefox 2" "https://en.wikipedia.org/wiki/${query}"
 }
 
 function killag {
@@ -199,43 +205,43 @@ kill $(ps aux | ag $1 | ag -v "grep" | awk '{print $2}')
 
 # cd to dotfile repo and open in editor
 function dotf() {
-  cd ~/.dotfiles && vim .
+cd ~/.dotfiles && vim .
 }
 
 # create a new directory and enter it
 function mkd() {
-  if [ $# -lt 1 ]; then
-    echo "Missing argument";
-    return 1;
-  fi
+if [ $# -lt 1 ]; then
+  echo "Missing argument";
+  return 1;
+fi
 
-  mkdir -p "$@" && cd "$@"
+mkdir -p "$@" && cd "$@"
 }
 
 function rails_pg() {
-  rails new $1 -T -B --skip-turbolinks --database=postgresql
+rails new $1 -T -B --skip-turbolinks --database=postgresql
 
-  cd $1
+cd $1
 
-  add_rails_gems
-  bundle
-  rails generate rspec:install
+add_rails_gems
+bundle
+rails generate rspec:install
 
-  git init
-  git add .
-  git commit -m "initial commit"
+git init
+git add .
+git commit -m "initial commit"
 
-  vim .;
+vim .;
 }
 
 function add_rails_gems() {
 
 echo "
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'pry-rails'
-  gem 'better_errors'
+gem 'rspec-rails'
+gem 'capybara'
+gem 'pry-rails'
+gem 'better_errors'
 end
 " >> Gemfile;
 

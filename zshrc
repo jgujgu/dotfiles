@@ -3,38 +3,14 @@ source ~/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle fcambus/ansiweather
-antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme miloshadzic
 antigen apply
 
-#source "${HOME}/zgen/zgen.zsh"
-
-#if ! zgen saved; then
-    #echo "Creating a zgen save"
-    #zgen oh-my-zsh
-    #zgen oh-my-zsh plugins/git
-    #zgen oh-my-zsh plugins/sudo
-    #zgen oh-my-zsh plugins/command-not-found
-    #zgen load zsh-users/zsh-syntax-highlighting
-    #zgen load /path/to/super-secret-private-plugin
-    #zgen load zsh-users/zsh-completions src
-    #zgen oh-my-zsh themes/miloshadzic
-    #zgen save
-#fi
-
 typeset -ga sources
 sources+="$HOME/.aliases.zsh"
-foreach file (`echo $sources`)
-    if [[ -a $file ]]; then
-        source $file
-    fi
-end
 
 export PATH=$HOME/anaconda/bin:$PATH
 export PATH=$HOME/torch/install/bin:$PATH
-sh /Users/jgujgu/torch/install/bin/torch-activate
-MYSQL=/usr/local/mysql/bin
-export PATH=$PATH:$MYSQL
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -42,10 +18,11 @@ export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 export CUDA_HOME=/usr/local/cuda
 export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
-export PATH="$CUDA_HOME/bin:$PATH"
+export PATH=$CUDA_HOME/bin:$PATH
 export GOOGLE_APPLICATION_CREDENTIALS=$HOME/turing/speech-transcription-53fc3d00dafe.json
 export GOOGLE_APP_NAME=aerial-reality-135501
 export GOOGLE_BUCKET=transcription-test
+export PATH=$PATH:$MYSQL
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -63,16 +40,24 @@ bindkey -v
 bindkey -M viins 'jf' vi-cmd-mode
 bindkey -M viins 'fj' vi-cmd-mode
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 unsetopt beep
+unset MAILCHECK
 source ~/.rvm/scripts/rvm
 export EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOROOT=/usr/local/Cellar/go/1.11.2
+export GOPATH=/usr/local/Cellar/go/packages
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # The next line updates PATH for the Google Cloud SDK.
 source '/Users/jgujgu/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/Users/jgujgu/google-cloud-sdk/completion.zsh.inc'
+
+export PATH=$HOME/.rvm/gems/ruby-2.4.0/bin:$PATH
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+echo "Going to load RVM"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH="$GEM_HOME/bin:$PATH"
