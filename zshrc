@@ -1,4 +1,5 @@
 source ~/antigen.zsh
+source "$HOME/.aliases.zsh"
 
 antigen use oh-my-zsh
 antigen bundle git
@@ -7,7 +8,6 @@ antigen theme miloshadzic
 antigen apply
 
 typeset -ga sources
-sources+="$HOME/.aliases.zsh"
 
 export PATH=$HOME/anaconda/bin:$PATH
 export PATH=$HOME/torch/install/bin:$PATH
@@ -58,6 +58,5 @@ source '/Users/jgujgu/google-cloud-sdk/completion.zsh.inc'
 
 export PATH=$HOME/.rvm/gems/ruby-2.4.0/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-echo "Going to load RVM"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH="$GEM_HOME/bin:$PATH"

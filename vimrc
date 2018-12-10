@@ -71,7 +71,7 @@ set visualbell
 " Set 80 character ruler and colors
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn cterm=NONE ctermbg=0"
-:colorscheme base16-solarized
+:colorscheme base16-solarized-dark
 set noswapfile
 set autowrite
 set softtabstop=2
