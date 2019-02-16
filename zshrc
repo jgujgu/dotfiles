@@ -1,5 +1,5 @@
 source ~/antigen.zsh
-source "$HOME/.aliases.zsh"
+source ~/.aliases.zsh
 
 antigen use oh-my-zsh
 antigen bundle git
