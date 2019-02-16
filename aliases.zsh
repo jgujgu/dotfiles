@@ -27,6 +27,7 @@ alias dog="ssh 'jgu@104.236.182.224'"
 alias dol="ssh 'jgu@165.227.12.232'"
 alias dob="ssh 'root@138.68.249.27'"
 alias lake="ssh 'jgu@104.236.183.161'"
+alias fsh="figaro heroku:set -e production"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"

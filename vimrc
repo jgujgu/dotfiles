@@ -48,6 +48,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'isRuslan/vim-es6'
+Plugin 'posva/vim-vue'
 
 call vundle#end()
 
