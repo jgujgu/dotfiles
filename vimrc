@@ -58,6 +58,8 @@ set nocompatible
 set smartindent
 set autoindent
 set ff=unix
+set binary
+set noeol
 setlocal foldmethod=indent
 autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
 syntax on             " Enable syntax highlighting
