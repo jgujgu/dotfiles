@@ -92,6 +92,7 @@ set autoread " Auto-reload buffers when file changed on disk
 set expandtab " use spaces, not tabs (optional)
 set backspace=indent,eol,start " backspace through everything in insert mode
 set shortmess+=I
+set redrawtime=10000
 
 "hide very last line because of redundancy
 set noshowmode
