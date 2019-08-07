@@ -78,7 +78,7 @@ highlight ColorColumn cterm=NONE ctermbg=0"
 set noswapfile
 set autowrite
 set softtabstop=2
-set tabstop=2 shiftwidth=2 expandtab
+set tabstop=2 shiftwidth=2
 set background=dark
 set modifiable
 set ignorecase
@@ -130,9 +130,11 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 "ruby debug abbrev
 iabbr bb byebug
+iabbr hh #hello
 map <Leader>bb orequire 'byebug'; byebug<esc>:w<cr>
 map <Leader>yy orequire 'pry'; binding.pry<esc>:w<cr>
 map <Leader>ap ogem 'irbtools'<esc>ogem 'awesome_print'<esc>:w<cr>
+map <Leader>con oconsole.log("")<esc>
 
 " Easy copy pasting
 map <Leader>m :.!pbcopy<CR>
