@@ -29,6 +29,7 @@ alias dob="ssh 'root@138.68.249.27'"
 alias lake="ssh 'jgu@104.236.183.161'"
 alias fsh="figaro heroku:set -e production"
 alias hs="cd $HOME/hubstaff"
+alias p3="python3"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -67,6 +68,7 @@ alias gcb="git checkout -b "
 alias gb="git branch"
 alias gr="git rebase"
 alias grid="git rebase -i development"
+alias grim="git rebase -i master"
 alias gpb="git push --set-upstream origin HEAD"
 alias gl="git log --all --graph --decorate" # detailed log
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset \
@@ -141,6 +143,10 @@ alias in="sudo gem install"
 alias loveme="rails s -p 3000 -b lvh.me"
 alias lm="rails s -p 3000 -b lvh.me"
 alias yrt="yarn run test:unit"
+
+#yarn
+alias yt="yarn test"
+alias yi="yarn install"
 
 #nodejs
 alias ns="npm start"
