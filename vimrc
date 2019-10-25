@@ -47,7 +47,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'slim-template/vim-slim.git'
-Plugin 'isRuslan/vim-es6'
 Plugin 'posva/vim-vue'
 
 call vundle#end()
@@ -404,3 +403,24 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
             \ -g ""'
 
 let g:mustache_abbreviations = 1
+
+"nerdcommenter for vue files
+let g:ft = ''
+function! NERDCommenter_before()
+  if &ft == 'vue'
+    let g:ft = 'vue'
+    let stack = synstack(line('.'), col('.'))
+    if len(stack) > 0
+      let syn = synIDattr((stack)[0], 'name')
+      if len(syn) > 0
+        exe 'setf ' . substitute(tolower(syn), '^vue_', '', '')
+      endif
+    endif
+  endif
+endfunction
+function! NERDCommenter_after()
+  if g:ft == 'vue'
+    setf vue
+    let g:ft = ''
+  endif
+endfunction

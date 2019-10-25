@@ -5,7 +5,7 @@
     ~/.nvimrc: nvimrc
     ~/.pryrc: pryrc
     ~/.zshrc: zshrc
-    ~/.eslintrc: eslintrc
+    ~/.eslintrc.js: eslintrc.js
     ~/.vim: vim/
     ~/.nvim: vim/
     ~/.aliases.zsh: aliases.zsh
