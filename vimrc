@@ -426,10 +426,17 @@ function! NERDCommenter_after()
   endif
 endfunction
 
+"rubocop config
+let g:vimrubocop_config = '/Users/jgujgu/hubstaff/hubstaff-server/.rubocop_todo.yml'
+let g:vimrubocop_keymap = 0
+nmap <Leader>c :RuboCop<CR>
+
 "ale config
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '.'
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
-let g:ale_fixers = ['eslint']
+let g:ale_fixers = ['eslint', 'rubocop']
 let g:ale_fix_on_save = 1
 nnoremap <Leader>a :ALEFix<CR>
+
+
