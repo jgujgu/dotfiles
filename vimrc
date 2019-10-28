@@ -42,12 +42,13 @@ Plugin 'honza/vim-snippets'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'mxw/vim-jsx'
+Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'scrooloose/syntastic'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'posva/vim-vue'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 
@@ -159,11 +160,11 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 "SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)"
-            \: pumvisible() ? "\<C-n>" : "\<TAB>"
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)"
-            \: "\<TAB>"
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
 
 " Running jasmine-node tests from Vim with Vimux
 map <Leader>j :w %<cr>:call VimuxRunCommand("clear; jasmine-node --verbose " . bufname("%"))<cr>
@@ -199,51 +200,51 @@ set wildignore+=tmp/**
 " ================ Status bar configuration =======================
 " Lightline config
 let g:lightline = {
-            \ 'colorscheme': 'solarized',
-            \ 'active': {
-            \ 'left': [ [ 'mode', ], [ 'fugitive', 'readonly', 'filename' ] ],
-            \ 'right': [ [ 'syntastic', 'column', 'lineinfo' ], [ 'filetype' ] ]
-            \ },
-            \ 'component': {
-            \ 'column': '%c'
-            \ },
-            \ 'component_function': {
-            \ 'fugitive': 'MyFugitive',
-            \ 'readonly': 'MyReadonly',
-            \ 'filetype': 'MyFiletype',
-            \ 'lineinfo': 'MyLineInfo'
-            \ },
-            \ 'component_expand': {
-            \ 'syntastic': 'SyntasticStatuslineFlag',
-            \ },
-            \ 'component_type': {
-            \ 'syntastic': 'error',
-            \ },
-            \ 'separator': { 'left': '', 'right': '' },
-            \ 'subseparator': { 'left': '| ', 'right': '| ' }
-            \ }
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \ 'left': [ [ 'mode', ], [ 'fugitive', 'readonly', 'filename' ] ],
+      \ 'right': [ [ 'syntastic', 'column', 'lineinfo' ], [ 'filetype' ] ]
+      \ },
+      \ 'component': {
+      \ 'column': '%c'
+      \ },
+      \ 'component_function': {
+      \ 'fugitive': 'MyFugitive',
+      \ 'readonly': 'MyReadonly',
+      \ 'filetype': 'MyFiletype',
+      \ 'lineinfo': 'MyLineInfo'
+      \ },
+      \ 'component_expand': {
+      \ 'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \ 'syntastic': 'error',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '| ', 'right': '| ' }
+      \ }
 
 
 " Lightline functions
 function! MyReadonly()
-    if &readonly
-        return "🔒"
-    else
-        return ""
-    endif
+  if &readonly
+    return "🔒"
+  else
+    return ""
+  endif
 endfunction
 
 function! MyFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! MyFugitive()
-    if exists('*fugitive#head')
-        let _ = fugitive#head()
-        return strlen(_) ? '🍆 '._ : ''
-        return winwidth(0) > 70 ? (strlen(_) ? '💥 '._ : '') : ''
-    endif
-    return ''
+  if exists('*fugitive#head')
+    let _ = fugitive#head()
+    return strlen(_) ? '🍆 '._ : ''
+    return winwidth(0) > 70 ? (strlen(_) ? '💥 '._ : '') : ''
+  endif
+  return ''
 endfunction
 
 set statusline+=%#warningmsg#
@@ -263,18 +264,18 @@ let g:syntastic_style_warning_symbol = "⚠"
 "Syntastic Checkers
 
 function! MyLineInfo()
-    return '🌞 ' . line('.') . '/' . line('$')
-    return winwidth(0) > 70 ? '🌞 ' . line('.') . '/' . line('$') : ''
+  return '🌞 ' . line('.') . '/' . line('$')
+  return winwidth(0) > 70 ? '🌞 ' . line('.') . '/' . line('$') : ''
 endfunction
 
 augroup AutoSyntastic
-    autocmd!
-    autocmd BufWritePost *.rb,*.js,*.css,*.sh,*.go call s:syntastic()
+  autocmd!
+  autocmd BufWritePost *.rb,*.js,*.css,*.sh,*.go call s:syntastic()
 augroup END
 
 function! s:syntastic()
-    SyntasticCheck
-    call lightline#update()
+  SyntasticCheck
+  call lightline#update()
 endfunction
 
 " ================ Misc =======================
@@ -289,19 +290,19 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " ================ Delete whitespace function =======================
 function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
 
-    "associate the .es6 file extension with JavaScript
-    autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+  "associate the .es6 file extension with JavaScript
+  autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfunction
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " strip trailing whitespace on save
@@ -315,36 +316,36 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " strip trailing whi
 
 " For snippet_complete marker.
 if has('conceal')
-    set conceallevel=2 concealcursor=i
+  set conceallevel=2 concealcursor=i
 endif
 
 " ================ Persistent Undo for undo plugin ==================
 " Keep undo history across sessions, by storing in file.
 if has('persistent_undo')
-    silent !mkdir ~/.vim/backups > /dev/null 2>&1
-    set undodir=~/.vim/backups
-    set undofile
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
 endif
 " Enable status bar always
 set laststatus=2
 
 " ================ Goyo-limelight commands ==================
 function! s:goyo_enter()
-    silent !tmux set status off
-    set noshowmode
-    set noshowcmd
-    set scrolloff=999
-    Limelight
-    " ...
+  silent !tmux set status off
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+  " ...
 endfunction
 
 function! s:goyo_leave()
-    silent !tmux set status on
-    set showmode
-    set showcmd
-    set scrolloff=5
-    Limelight!
-    " ...
+  silent !tmux set status on
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+  " ...
 endfunction
 
 autocmd! User GoyoEnter
@@ -355,14 +356,14 @@ nnoremap <Leader>g :Goyo<CR>
 
 " The Silver Searcher
 if executable('ag')
-    " Use ag over grep
-    set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
 endif
 
 " bind \ (backward slash) to grep shortcut
@@ -375,32 +376,32 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 let g:rbpt_colorpairs = [
-            \ ['brown',       'RoyalBlue3'],
-            \ ['Darkblue',    'SeaGreen3'],
-            \ ['darkgray',    'DarkOrchid3'],
-            \ ['darkgreen',   'firebrick3'],
-            \ ['darkcyan',    'RoyalBlue3'],
-            \ ['darkred',     'SeaGreen3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['brown',       'firebrick3'],
-            \ ['gray',        'RoyalBlue3'],
-            \ ['black',       'SeaGreen3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['Darkblue',    'firebrick3'],
-            \ ['darkgreen',   'RoyalBlue3'],
-            \ ['darkcyan',    'SeaGreen3'],
-            \ ['darkred',     'DarkOrchid3'],
-            \ ['red',         'firebrick3'],
-            \ ]
+      \ ['brown',       'RoyalBlue3'],
+      \ ['Darkblue',    'SeaGreen3'],
+      \ ['darkgray',    'DarkOrchid3'],
+      \ ['darkgreen',   'firebrick3'],
+      \ ['darkcyan',    'RoyalBlue3'],
+      \ ['darkred',     'SeaGreen3'],
+      \ ['darkmagenta', 'DarkOrchid3'],
+      \ ['brown',       'firebrick3'],
+      \ ['gray',        'RoyalBlue3'],
+      \ ['black',       'SeaGreen3'],
+      \ ['darkmagenta', 'DarkOrchid3'],
+      \ ['Darkblue',    'firebrick3'],
+      \ ['darkgreen',   'RoyalBlue3'],
+      \ ['darkcyan',    'SeaGreen3'],
+      \ ['darkred',     'DarkOrchid3'],
+      \ ['red',         'firebrick3'],
+      \ ]
 
 "speed up ctrlp
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-            \ --ignore .git
-            \ --ignore .svn
-            \ --ignore .hg
-            \ --ignore .DS_Store
-            \ --ignore "**/*.pyc"
-            \ -g ""'
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
 
 let g:mustache_abbreviations = 1
 
@@ -424,3 +425,11 @@ function! NERDCommenter_after()
     let g:ft = ''
   endif
 endfunction
+
+"ale config
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_fixers = ['eslint']
+let g:ale_fix_on_save = 1
+nnoremap <Leader>a :ALEFix<CR>
