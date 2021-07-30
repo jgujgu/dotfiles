@@ -29,7 +29,14 @@ alias dob="ssh 'root@138.68.249.27'"
 alias lake="ssh 'jgu@104.236.183.161'"
 alias fsh="figaro heroku:set -e production"
 alias hs="cd $HOME/hubstaff"
+alias l="exa -lahF"
+alias ls="exa"
+
+#python
 alias p3="python3"
+#alias ps="python3 manage.py runserver"
+alias pmake="python3 manage.py makemigrations"
+alias pmig="python3 manage.py migrate"
 
 #keyboard on off
 alias off="sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext"
@@ -142,11 +149,14 @@ alias u="unicorn -c config/unicorn.rb"
 alias in="sudo gem install"
 alias loveme="rails s -p 3000 -b lvh.me"
 alias lm="rails s -p 3000 -b lvh.me"
-alias yrt="yarn run test:unit"
+alias pack="bin/webpack-dev-server"
+alias zs="zat server"
 
 #yarn
 alias yt="yarn test"
 alias yi="yarn install"
+alias yrt="yarn run test:unit"
+alias yrb="yarn run build"
 
 #nodejs
 alias ns="npm start"
@@ -178,6 +188,7 @@ alias t="tree"
 alias b="bundle"
 alias c="clear;ls"
 alias archflags='ARCHFLAGS="-arch x86_64" bundle install'
+alias startngrok='ngrok http --host-header=tasks.hubstaff.test localhost:3003'
 
 #alias file
 alias ale="v $HOME/dotfiles/aliases.zsh"

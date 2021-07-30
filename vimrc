@@ -49,6 +49,8 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'posva/vim-vue'
 Plugin 'w0rp/ale'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'jparise/vim-graphql'
 
 call vundle#end()
 
@@ -124,6 +126,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap jf <esc>
 inoremap fj <esc>
 map <C-i> :NERDTreeToggle<CR>
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
