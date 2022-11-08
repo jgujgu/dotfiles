@@ -14,7 +14,6 @@ export PATH=$HOME/torch/install/bin:$PATH
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
 export VISUAL=vim
 export EDITOR="$VISUAL"
-export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 export CUDA_HOME=/usr/local/cuda
 export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:$CUDA_HOME/lib"
@@ -23,6 +22,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=$HOME/turing/speech-transcription-53fc3d00
 export GOOGLE_APP_NAME=aerial-reality-135501
 export GOOGLE_BUCKET=transcription-test
 export PATH=$PATH:$MYSQL
+export CHROME_EXECUTABLE="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
@@ -59,4 +59,9 @@ source '/Users/jgujgu/google-cloud-sdk/completion.zsh.inc'
 export PATH=$HOME/.rvm/gems/ruby-2.4.0/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-export PATH="$GEM_HOME/bin:$PATH"
+export PATH="$GEM_HOME/bin:$PAT"H
+rt PATH="$PATH:$(yarn global bin)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion

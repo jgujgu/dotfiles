@@ -8,8 +8,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-bundler'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'danielwe/base16-vim'
+Plugin 'chriskempson/base16-vim'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'rking/ag.vim'
@@ -51,6 +50,7 @@ Plugin 'posva/vim-vue'
 Plugin 'w0rp/ale'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jparise/vim-graphql'
+Plugin 'valloric/youcompleteme'
 
 call vundle#end()
 
@@ -76,12 +76,10 @@ set visualbell
 " Set 80 character ruler and colors
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn cterm=NONE ctermbg=0"
-:colorscheme base16-solarized-dark
 set noswapfile
 set autowrite
 set softtabstop=2
 set tabstop=2 shiftwidth=2
-set background=dark
 set modifiable
 set ignorecase
 set ic
@@ -122,7 +120,6 @@ nnoremap <BS> <C-o>
 nmap <Leader><Leader> V
 nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F4> :NumbersOnOff<CR>
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap jf <esc>
 inoremap fj <esc>
 map <C-i> :NERDTreeToggle<CR>
@@ -161,14 +158,6 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-"SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<TAB>"
-
 " Running jasmine-node tests from Vim with Vimux
 map <Leader>j :w %<cr>:call VimuxRunCommand("clear; jasmine-node --verbose " . bufname("%"))<cr>
 
@@ -177,12 +166,6 @@ nnoremap <Leader>5 :GundoToggle<CR>
 
 "window swap
 nnoremap <silent> <leader>2 :call WindowSwap#EasyWindowSwap()<CR>
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " RSpec.vim mapping
 map <Leader>a :call RunAllSpecs()<CR>
@@ -203,7 +186,7 @@ set wildignore+=tmp/**
 " ================ Status bar configuration =======================
 " Lightline config
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'selenized_white',
       \ 'active': {
       \ 'left': [ [ 'mode', ], [ 'fugitive', 'readonly', 'filename' ] ],
       \ 'right': [ [ 'syntastic', 'column', 'lineinfo' ], [ 'filetype' ] ]

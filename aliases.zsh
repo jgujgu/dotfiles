@@ -4,6 +4,7 @@ alias pin="$HOME/Desktop/pinyintype"
 alias down="$HOME/Desktop/down"
 alias tu="$HOME//Turing"
 alias rls="$HOME/Turing/rails/"
+alias home="$HOME/Turing/homebound/"
 alias res="redis-server"
 alias red="redis-cli"
 alias di="$HOME/Turing/rs/rails/diffepedia"
@@ -76,6 +77,7 @@ alias gb="git branch"
 alias gr="git rebase"
 alias grid="git rebase -i development"
 alias grim="git rebase -i master"
+alias grima="git rebase -i main"
 alias gpb="git push --set-upstream origin HEAD"
 alias gl="git log --all --graph --decorate" # detailed log
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset \
@@ -161,6 +163,14 @@ alias yrb="yarn run build"
 #nodejs
 alias ns="npm start"
 alias ni="npm install"
+alias cg="npm run graphql-codegen"
+alias rf="yarn lint:fix"
+alias rt="yarn test"
+alias sd="yarn start-dev"
+alias sq="yarn start-qa"
+
+#gumroad
+alias fs="foreman start -f Procfile.dev"
 
 #volt
 alias vs="volt server"
