@@ -36,8 +36,6 @@ Plugin 'junegunn/limelight.vim'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'danro/rename.vim'
 Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/rainbow_parentheses.vim'
@@ -51,6 +49,11 @@ Plugin 'w0rp/ale'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'jparise/vim-graphql'
 Plugin 'valloric/youcompleteme'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 
@@ -424,4 +427,12 @@ let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 let g:ale_fixers = ['eslint', 'rubocop']
 nnoremap <Leader>a :ALEFix<CR>
 
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>""
