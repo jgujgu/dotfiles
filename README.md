@@ -1,5 +1,4 @@
-Readme mostly copied from indiesquidge. ;D I've learned most of what I know about dotfiles from him. Actually, all.
-
+Stuff stripped from https://www.josean.com/posts/terminal-setup
 Focused heavily on Tmux, Vim, Zsh, and Antigen integration.
 ![](http://i.imgur.com/rph6IE9.png)
 
