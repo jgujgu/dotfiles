@@ -1,4 +1,8 @@
 Stuff stripped from https://www.josean.com/posts/terminal-setup
+
+https://github.com/VundleVim/Vundle.vim#quick-start
+
+
 Focused heavily on Tmux, Vim, Zsh, and Antigen integration.
 ![](http://i.imgur.com/rph6IE9.png)
 
