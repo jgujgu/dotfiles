@@ -32,6 +32,8 @@ alias fsh="figaro heroku:set -e production"
 alias hs="cd $HOME/hubstaff"
 alias l="exa -lahF"
 alias ls="exa"
+alias vi=/opt/homebrew/bin/vim
+alias vim=/opt/homebrew/bin/vim
 
 #python
 alias p3="python3"
