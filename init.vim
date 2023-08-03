@@ -78,10 +78,6 @@ Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" indentline
-" https://github.com/Yggdroot/indentLine
-Plug 'Yggdroot/indentLine'
-
 Plug 'Raimondi/delimitMate'
 Plug 'pangloss/vim-javascript'
 Plug 'airblade/vim-gitgutter'
