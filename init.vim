@@ -82,6 +82,7 @@ Plug 'junegunn/fzf.vim'
 " https://github.com/Yggdroot/indentLine
 Plug 'Yggdroot/indentLine'
 
+Plug 'Raimondi/delimitMate'
 Plug 'pangloss/vim-javascript'
 Plug 'airblade/vim-gitgutter'
 Plug 'wesQ3/vim-windowswap'
@@ -89,7 +90,7 @@ Plug 'danro/rename.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'scrooloose/syntastic'
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-surround'
 Plug 'leafgarland/typescript-vim'
 Plug 'ervandew/supertab'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
